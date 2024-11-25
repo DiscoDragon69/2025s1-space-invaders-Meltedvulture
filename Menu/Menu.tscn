@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=3 uid="uid://def08j5lxmye2"]
+
+[ext_resource type="Texture2D" uid="uid://b8bbdckmfcq4b" path="res://Images/tie.png" id="1"]
+[ext_resource type="FontFile" uid="uid://ciuann1rm6s0g" path="res://Menu/PaletteMosaic-Regular.ttf" id="2"]
+[ext_resource type="FontFile" path="res://Menu/buttonFont.tres" id="3"]
+
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("2")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[node name="MenuMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Layout/Title"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = SubResource("1")
+text = "Space Invaders Clone 2022"
+
+[node name="Main" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Screenshot" type="TextureRect" parent="Layout/Main"]
+layout_mode = 2
+texture = ExtResource("1")
+
+[node name="Buttons" type="VBoxContainer" parent="Layout/Main"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Start Game Button" type="Button" parent="Layout/Main/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3")
+text = "Start Game"
+
+[node name="Options" type="Button" parent="Layout/Main/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3")
+text = "Options"
+
+[node name="Quit" type="Button" parent="Layout/Main/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3")
+text = "Quit"
+
+[node name="Credits" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Layout/Credits"]
+layout_mode = 2
+text = "Copyright Ryan Cather 2022."
