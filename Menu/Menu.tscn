@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://def08j5lxmye2"]
+[gd_scene load_steps=7 format=3 uid="uid://def08j5lxmye2"]
 
 [ext_resource type="Texture2D" uid="uid://b8bbdckmfcq4b" path="res://Images/tie.png" id="1"]
 [ext_resource type="FontFile" uid="uid://ciuann1rm6s0g" path="res://Menu/PaletteMosaic-Regular.ttf" id="2"]
 [ext_resource type="FontFile" path="res://Menu/buttonFont.tres" id="3"]
+[ext_resource type="Script" path="res://Menu/start_game_button.gd" id="4_s5cbm"]
+[ext_resource type="Script" path="res://Menu/quit.gd" id="5_2d4ty"]
 
 [sub_resource type="FontFile" id="1"]
 fallbacks = Array[Font]([ExtResource("2")])
@@ -18,6 +20,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -58,6 +62,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("3")
 text = "Start Game"
+script = ExtResource("4_s5cbm")
 
 [node name="Options" type="Button" parent="Layout/Main/Buttons"]
 layout_mode = 2
@@ -72,6 +77,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("3")
 text = "Quit"
+script = ExtResource("5_2d4ty")
 
 [node name="Credits" type="HBoxContainer" parent="Layout"]
 layout_mode = 2
@@ -79,3 +85,6 @@ layout_mode = 2
 [node name="Label" type="Label" parent="Layout/Credits"]
 layout_mode = 2
 text = "Copyright Ryan Cather 2022."
+
+[connection signal="pressed" from="Layout/Main/Buttons/Start Game Button" to="Layout/Main/Buttons/Start Game Button" method="_on_start_button_pressed"]
+[connection signal="pressed" from="Layout/Main/Buttons/Quit" to="Layout/Main/Buttons/Start Game Button" method="_on_quit_button_pressed"]
