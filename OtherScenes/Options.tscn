@@ -29,6 +29,7 @@ size_flags_vertical = 3
 
 [node name="ReturnButton" type="Button" parent="Layout"]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 10
 text = "Return to Main Menu"
 script = ExtResource("1_yj5jw")
