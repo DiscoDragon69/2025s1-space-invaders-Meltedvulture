@@ -2,7 +2,7 @@
 
 [ext_resource type="AudioStream" uid="uid://v5hbr4hj6bwa" path="res://Audio/backgroundMusic.wav" id="1"]
 [ext_resource type="PackedScene" path="res://Player/Player.tscn" id="2"]
-[ext_resource type="PackedScene" path="res://Enemy/Enemy.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://ciq8ckeac7yxj" path="res://Enemy/Enemy.tscn" id="3"]
 [ext_resource type="Script" path="res://MainGame/MainGame.gd" id="4"]
 [ext_resource type="Script" path="res://Enemy/Enemies.gd" id="5"]
 [ext_resource type="Script" path="res://ExampleCode.gd" id="6"]

@@ -1,28 +1,28 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://ciq8ckeac7yxj"]
 
-[ext_resource path="res://Images/tie.png" type="Texture2D" id=1]
-[ext_resource path="res://Enemy/Enemy.gd" type="Script" id=2]
+[ext_resource type="Texture2D" uid="uid://b8bbdckmfcq4b" path="res://Images/tie.png" id="1"]
+[ext_resource type="Script" path="res://Enemy/Enemy.gd" id="2"]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 43.3061, 40.9474 )
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(86.6122, 81.8948)
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 42.7014, 39.6576 )
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(85.4028, 79.3152)
 
 [node name="Enemy" type="CharacterBody2D"]
-position = Vector2( 0.911194, -1.91614 )
-script = ExtResource( 2 )
+position = Vector2(0.911194, -1.91614)
+script = ExtResource("2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.604614, 0.685242 )
-shape = SubResource( 1 )
+position = Vector2(-0.604614, 0.685242)
+shape = SubResource("1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2( 0, 2.11273 )
-scale = Vector2( 0.210826, 0.164444 )
-texture = ExtResource( 1 )
+position = Vector2(0, 2.11273)
+scale = Vector2(0.210826, 0.164444)
+texture = ExtResource("1")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 2 )
+shape = SubResource("2")
