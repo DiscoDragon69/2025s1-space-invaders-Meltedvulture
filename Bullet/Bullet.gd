@@ -11,11 +11,9 @@ func _ready():
 
 
 func _physics_process(delta):
-	var collidedObject = move_and_collide(Vector2(0, -speed*delta))
-	if (collidedObject):
-
-		#BROKEN FUNCTION PLEASE FIX LATER :(
-		#if "Enemy" in collidedObject.collider.name:
-			#collidedObject.get_collider().queue_free()
+	var collidedobject = move_and_collide(Vector2(0, -speed*delta))
+	if (collidedobject):
+		if "Enemy" in collidedobject.get_collider().name:
+			collidedobject.get_collider().queue_free()
 		queue_free()
 		GlobalVariables.bulletInstanceCount -= 1
