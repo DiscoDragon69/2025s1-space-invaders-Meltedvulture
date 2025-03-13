@@ -15,5 +15,12 @@ func _physics_process(delta):
 	if (collidedobject):
 		if "Enemy" in collidedobject.get_collider().name:
 			collidedobject.get_collider().queue_free()
+			
+			# MY Enemy count code cause yeah
+			#GlobalVariables.enemyCount -= 1
+			#print(GlobalVariables.enemyCount)
+			#if GlobalVariables.enemyCount < 1:
+				#get_tree().change_scene_to_file("res://Menu/Menu.tscn")
+		
 		queue_free()
 		GlobalVariables.bulletInstanceCount -= 1

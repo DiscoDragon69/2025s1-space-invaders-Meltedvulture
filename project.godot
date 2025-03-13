@@ -13,7 +13,7 @@ config_version=5
 config/name="SPACE INVADERS"
 run/main_scene="res://Menu/Menu.tscn"
 config/features=PackedStringArray("4.3")
-config/icon="res://icon.png"
+config/icon="/home/christopherlim/Space Invaders Icon.png"
 
 [autoload]
 

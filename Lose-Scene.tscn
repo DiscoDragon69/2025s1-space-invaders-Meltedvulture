@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhmnv1lrmnjet"]
+
+[ext_resource type="Script" path="res://button.gd" id="1_d1lus"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Layout" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Heading" type="Label" parent="Layout"]
+layout_mode = 2
+text = "You Lost!"
+
+[node name="Button" type="Button" parent="Layout"]
+layout_mode = 2
+text = "Return to main menu"
+script = ExtResource("1_d1lus")
+
+[connection signal="pressed" from="Layout/Button" to="Layout/Button" method="_on_pressed"]

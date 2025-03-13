@@ -1,8 +1,8 @@
 extends Control
 
-
-@export var countdown_max: int = 10
+@export var countdown_max: int = 60
 var current_timer
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,12 +11,12 @@ func _ready():
 	
 	while current_timer > 0:
 		await get_tree().create_timer(1).timeout
-		$HUD/Countdown.text = str(current_timer)
 		current_timer -= 1
-		print(current_timer)
+		$HUD/Countdown.text = str(current_timer)
+	get_tree().change_scene_to_file("res://Lose-Scene.tscn")
 	print("Game Over")
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	
+func _process(delta):
+	#$HUD/CurrentScore.text = str(GlobalVariables.scoring_information["currentScore"])
+	if get_tree().get_nodes_in_group("enemy").size() == 0:
+		get_tree().change_scene_to_file("res://WinScene.tscn")

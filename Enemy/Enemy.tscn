@@ -9,7 +9,7 @@ size = Vector2(86.6122, 81.8948)
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(85.4028, 79.3152)
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 position = Vector2(0.911194, -1.91614)
 script = ExtResource("2")
 

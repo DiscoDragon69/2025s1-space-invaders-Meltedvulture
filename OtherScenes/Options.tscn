@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cf7nkvr13t5tq"]
+[gd_scene load_steps=3 format=3 uid="uid://cf7nkvr13t5tq"]
 
 [ext_resource type="Script" path="res://OtherScenes/return_button.gd" id="1_yj5jw"]
+[ext_resource type="Texture2D" uid="uid://cj16vvwnj7v8o" path="res://OtherScenes/Horse.jpeg" id="2_lf55l"]
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -33,5 +34,17 @@ size_flags_horizontal = 4
 size_flags_vertical = 10
 text = "Return to Main Menu"
 script = ExtResource("1_yj5jw")
+
+[node name="Horse" type="Sprite2D" parent="Layout"]
+position = Vector2(647, 328)
+scale = Vector2(1.85802, 1.85802)
+texture = ExtResource("2_lf55l")
+
+[node name="Label" type="Label" parent="Layout"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+text = "What can you eat??"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Layout/ReturnButton" to="Layout/ReturnButton" method="_on_return_pressed"]
