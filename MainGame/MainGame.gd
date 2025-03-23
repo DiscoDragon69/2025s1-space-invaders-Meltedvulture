@@ -17,6 +17,7 @@ func _ready():
 	print("Game Over")
 	
 func _process(delta):
-	#$HUD/CurrentScore.text = str(GlobalVariables.scoring_information["currentScore"])
+	$HUD/Health.update_health($Player.health)
+	$HUD/CurrentScore.text = str(GlobalVariables.scoringInformation["currentScore"])
 	if get_tree().get_nodes_in_group("enemy").size() == 0:
 		get_tree().change_scene_to_file("res://WinScene.tscn")

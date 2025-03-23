@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf1s85fh3uujg"]
+
+[ext_resource type="Script" path="res://button.gd" id="1_j8ets"]
+[ext_resource type="Script" path="res://win_scene.gd" id="1_l5u0m"]
+
+[node name="Win Scene" type="Node2D"]
+script = ExtResource("1_l5u0m")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Heading" type="Label" parent="Layout"]
+layout_mode = 2
+text = "You Won!"
+
+[node name="Button" type="Button" parent="Layout"]
+layout_mode = 2
+text = "Return to main menu"
+script = ExtResource("1_j8ets")
+
+[connection signal="pressed" from="Layout/Button" to="Layout/Button" method="_on_pressed"]

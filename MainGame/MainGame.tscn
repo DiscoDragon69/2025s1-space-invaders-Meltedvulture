@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://2v4t50md2vf8"]
+[gd_scene load_steps=11 format=3 uid="uid://2v4t50md2vf8"]
 
 [ext_resource type="AudioStream" uid="uid://v5hbr4hj6bwa" path="res://Audio/backgroundMusic.wav" id="1"]
 [ext_resource type="PackedScene" path="res://Player/Player.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://ciq8ckeac7yxj" path="res://Enemy/Enemy.tscn" id="3"]
+[ext_resource type="Script" path="res://MainGame/Health.gd" id="3_vjhax"]
 [ext_resource type="Script" path="res://MainGame/MainGame.gd" id="4"]
+[ext_resource type="Texture2D" uid="uid://ca0ymj7oe0pxs" path="res://Images/hud_heartFull.png" id="4_tev7b"]
 [ext_resource type="Script" path="res://Enemy/Enemies.gd" id="5"]
 [ext_resource type="Script" path="res://ExampleCode.gd" id="6"]
 
@@ -38,6 +40,31 @@ text = "Current Score"
 [node name="CurrentScore" type="Label" parent="HUD"]
 layout_mode = 2
 text = "0"
+
+[node name="Health" type="HBoxContainer" parent="HUD"]
+layout_mode = 2
+script = ExtResource("3_vjhax")
+mode = 2
+
+[node name="1" type="TextureRect" parent="HUD/Health"]
+layout_mode = 2
+texture = ExtResource("4_tev7b")
+
+[node name="2" type="TextureRect" parent="HUD/Health"]
+layout_mode = 2
+texture = ExtResource("4_tev7b")
+
+[node name="3" type="TextureRect" parent="HUD/Health"]
+layout_mode = 2
+texture = ExtResource("4_tev7b")
+
+[node name="4" type="TextureRect" parent="HUD/Health"]
+layout_mode = 2
+texture = ExtResource("4_tev7b")
+
+[node name="5" type="TextureRect" parent="HUD/Health"]
+layout_mode = 2
+texture = ExtResource("4_tev7b")
 
 [node name="Border_Left" type="Area2D" parent="." groups=["left"]]
 position = Vector2(-1.53629, 369.479)

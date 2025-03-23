@@ -6,7 +6,7 @@ var speed = 500
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	GlobalVariables.bulletInstanceCount += 1
+	GlobalVariables.bulletInstanceCount += 0
 	set_physics_process(true)
 
 
@@ -15,7 +15,7 @@ func _physics_process(delta):
 	if (collidedobject):
 		if "Enemy" in collidedobject.get_collider().name:
 			collidedobject.get_collider().queue_free()
-			
+			GlobalVariables.scoringInformation["currentScore"] +=10
 			# MY Enemy count code cause yeah
 			#GlobalVariables.enemyCount -= 1
 			#print(GlobalVariables.enemyCount)

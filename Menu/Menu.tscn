@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://def08j5lxmye2"]
+[gd_scene load_steps=8 format=3 uid="uid://def08j5lxmye2"]
 
 [ext_resource type="Texture2D" uid="uid://b8bbdckmfcq4b" path="res://Images/tie.png" id="1"]
+[ext_resource type="Script" path="res://Menu/menu.gd" id="1_rqhs0"]
 [ext_resource type="FontFile" uid="uid://ciuann1rm6s0g" path="res://Menu/PaletteMosaic-Regular.ttf" id="2"]
 [ext_resource type="FontFile" path="res://Menu/buttonFont.tres" id="3"]
 [ext_resource type="Script" path="res://Menu/start_game_button.gd" id="4_s5cbm"]
@@ -15,7 +16,7 @@ cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
-[node name="MenuMenu" type="Control"]
+[node name="Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,6 +25,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_rqhs0")
 
 [node name="Layout" type="VBoxContainer" parent="."]
 layout_mode = 0
