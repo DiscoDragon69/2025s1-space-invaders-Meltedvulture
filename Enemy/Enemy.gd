@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+var can_shoot = false
 var bullet = preload("res://Bullet-Enemy/Bullet-Enemy.tscn")
 
 
@@ -21,7 +22,8 @@ func _colliding(area):
 
 
 func fire_bullet() -> void:
-	if GlobalVariables.enemyBulletInstanceCount < 5:
-		var bulletInstance = bullet.instantiate()
-		bulletInstance.position = Vector2(global_position.x, global_position.y+20)
-		get_tree().get_root().add_child(bulletInstance)
+	if (can_shoot):
+		if GlobalVariables.enemyBulletInstanceCount < 5:
+			var bulletInstance = bullet.instantiate()
+			bulletInstance.position = Vector2(global_position.x, global_position.y+20)
+			get_tree().get_root().add_child(bulletInstance)

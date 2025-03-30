@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgtu2o748qndn"]
+
+[ext_resource type="Script" path="res://Bullet/bomb.gd" id="1_31pnt"]
+[ext_resource type="Texture2D" uid="uid://ccc3wyqjvllhe" path="res://Images/bullet.png" id="2_jkui2"]
+[ext_resource type="AudioStream" uid="uid://wkd5vsy6m2jp" path="res://Audio/bulletFire.wav" id="3_sue2p"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(9.27758, 8.83708)
+
+[node name="Bomb" type="CharacterBody2D"]
+position = Vector2(193.956, 142.277)
+script = ExtResource("1_31pnt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jkui2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_sue2p")
+autoplay = true

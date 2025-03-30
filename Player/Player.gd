@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 var movement_speed = 300
 var bullet_source = preload ("res://Bullet/Bullet.tscn")
+var bomb_source = preload ("res://Bullet/Bomb.tscn")
+var bombCooldown = 0
+var current_timer = 1
 @export var health: int = 100
 
 # Declare member variables here. Examples:
@@ -13,6 +16,11 @@ var bullet_source = preload ("res://Bullet/Bullet.tscn")
 func _ready():
 	set_process(true)
 	set_physics_process(true)
+	
+	while current_timer > 0:
+		await get_tree().create_timer(1).timeout
+		bombCooldown += 1
+		print(bombCooldown)
 
 func _physics_process(delta):
 	if Input.is_action_pressed("ui_left") and position.x > 40:	
@@ -26,6 +34,14 @@ func _process(delta):
 			var bullet_instance = bullet_source.instantiate()
 			bullet_instance.position = Vector2(position.x, position.y-20)
 			get_tree().get_root().add_child(bullet_instance)
+
+	if Input.is_action_just_pressed("bomb"):
+		if bombCooldown > 4:
+			var bomb_instance = bomb_source.instantiate()
+			bomb_instance.position = Vector2(position.x, position.y-20)
+			get_tree().get_root().add_child(bomb_instance)
+			bombCooldown = 0
+			
 
 
 func change_health(health_modifier):

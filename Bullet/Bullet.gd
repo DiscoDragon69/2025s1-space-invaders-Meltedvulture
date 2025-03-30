@@ -6,7 +6,7 @@ var speed = 500
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	GlobalVariables.bulletInstanceCount += 0
+	GlobalVariables.bulletInstanceCount += 1
 	set_physics_process(true)
 
 

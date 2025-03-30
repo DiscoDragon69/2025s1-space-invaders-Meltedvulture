@@ -19,5 +19,5 @@ func load_data():
 		return
 	
 	# Load specific data
-	GlobalVariables.scoringInformation["highScore"] = config_file.get_value("Player", "highScore", 0)
+	GlobalVariables.scoringInformation["highScore"] = config_file.get_value("currentPlayer", "highScore", 0)
 	print(GlobalVariables.scoringInformation["highScore"])

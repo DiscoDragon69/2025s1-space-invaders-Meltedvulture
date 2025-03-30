@@ -20,4 +20,7 @@ func _process(delta):
 	$HUD/Health.update_health($Player.health)
 	$HUD/CurrentScore.text = str(GlobalVariables.scoringInformation["currentScore"])
 	if get_tree().get_nodes_in_group("enemy").size() == 0:
+		#for n in (8):
+		#	$Player.move_and_collide(+10 on y axis)
+		#	await get_tree().create_timer(0.1).timeout
 		get_tree().change_scene_to_file("res://WinScene.tscn")
