@@ -11,3 +11,17 @@ var scoringInformation = {
 	"highScore": 0,
 	"highScorePlayerName" : "Winner"
 }
+
+
+
+
+#UFO will fly across the screen
+#If UFO shot it will choose a random number from 0 to list length of power ups
+#Disappear then award powerup
+#Times it will fly acoss the screen is random and all that is needed is a modified enemy
+
+#Scene modifiers:
+#Upon entering scene random modifier will be added to the scene
+#Faster enemies, enemies shoot faster, faster player, more player bullets
+#Bullet rain where enemies shoot crazy fast while a player shield moves along the screen that protects the player
+#

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxfbfxuseayjy"
-path="res://.godot/imported/hud_heartHalf.png-90d9b00baf2dd92ec0769f43e224ac05.ctex"
+uid="uid://d2vmwsg38k873"
+path="res://.godot/imported/BombFragment.png-b87d1f5d4da6c100f9ec839a100c20d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/hud_heartHalf.png"
-dest_files=["res://.godot/imported/hud_heartHalf.png-90d9b00baf2dd92ec0769f43e224ac05.ctex"]
+source_file="res://Bullet/BombFragment.png"
+dest_files=["res://.godot/imported/BombFragment.png-b87d1f5d4da6c100f9ec839a100c20d8.ctex"]
 
 [params]
 

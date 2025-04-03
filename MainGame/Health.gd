@@ -2,9 +2,9 @@ extends HBoxContainer
 
 enum MODES {simple, empty, partial}
 
-var heart_full = preload("res://Images/hud_heartFull.png")
-var heart_empty = preload("res://Images/hud_heartEmpty.png")
-var heart_half = preload("res://Images/hud_heartHalf.png")
+var heart_full = preload("res://Images/heart_full.png")
+var heart_empty = preload("res://Images/heart_empty.png")
+var heart_half = preload("res://Images/heart_half.png")
 
 @export var mode: MODES
 

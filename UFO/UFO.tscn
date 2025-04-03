@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn6t45tk4m45j"]
+
+[ext_resource type="Texture2D" uid="uid://t0xedun3y51p" path="res://UFO/UFO Sprite.png" id="1_drfl5"]
+[ext_resource type="Script" path="res://UFO/ufo.gd" id="1_vmsbr"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(200, 81.8948)
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(198, 79.3152)
+
+[node name="UFO" type="CharacterBody2D" groups=["enemy"]]
+position = Vector2(0.911194, -1.91614)
+script = ExtResource("1_vmsbr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.0888022, 0.685242)
+shape = SubResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 2.11273)
+scale = Vector2(0.210826, 0.164444)
+texture = ExtResource("1_drfl5")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.088806, 0)
+shape = SubResource("2")

@@ -36,7 +36,7 @@ func _process(delta):
 			get_tree().get_root().add_child(bullet_instance)
 
 	if Input.is_action_just_pressed("bomb"):
-		if bombCooldown > 4:
+		if bombCooldown > -4:
 			var bomb_instance = bomb_source.instantiate()
 			bomb_instance.position = Vector2(position.x, position.y-20)
 			get_tree().get_root().add_child(bomb_instance)
@@ -46,7 +46,7 @@ func _process(delta):
 
 func change_health(health_modifier):
 	health = health + health_modifier
-	if health > 100:
-		health = 100
+	if health > 10:
+		health = 10
 	elif health < 0:
 		get_tree().change_scene_to_file("res://Lose-Scene.tscn")

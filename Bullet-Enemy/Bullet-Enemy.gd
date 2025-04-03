@@ -17,7 +17,7 @@ func _physics_process(delta):
 		elif "Player" in collided_object.get_collider().name:
 			queue_free()
 			GlobalVariables.enemyBulletInstanceCount -= 1
-			collided_object.get_collider().change_health(-10)
+			collided_object.get_collider().change_health(-1)
 		else:
 			queue_free()
 			GlobalVariables.enemyBulletInstanceCount -= 1
