@@ -3,8 +3,8 @@ extends CharacterBody2D
 var movement_speed = 300
 var bullet_source = preload ("res://Bullet/Bullet.tscn")
 var bomb_source = preload ("res://Bullet/Bomb.tscn")
-var bombCooldown = 0
-var current_timer = 1
+var bombCount = 0
+var rng = RandomNumberGenerator.new()
 @export var health: int = 100
 
 # Declare member variables here. Examples:
@@ -17,11 +17,6 @@ func _ready():
 	set_process(true)
 	set_physics_process(true)
 	
-	while current_timer > 0:
-		await get_tree().create_timer(1).timeout
-		bombCooldown += 1
-		print(bombCooldown)
-
 func _physics_process(delta):
 	if Input.is_action_pressed("ui_left") and position.x > 40:	
 		move_and_collide(Vector2(-movement_speed * delta, 0))
@@ -34,13 +29,16 @@ func _process(delta):
 			var bullet_instance = bullet_source.instantiate()
 			bullet_instance.position = Vector2(position.x, position.y-20)
 			get_tree().get_root().add_child(bullet_instance)
+		
+
 
 	if Input.is_action_just_pressed("bomb"):
-		if bombCooldown > -4:
+		if bombCount >= 1:
+			bombCount -= 1
 			var bomb_instance = bomb_source.instantiate()
 			bomb_instance.position = Vector2(position.x, position.y-20)
 			get_tree().get_root().add_child(bomb_instance)
-			bombCooldown = 0
+			
 			
 
 
@@ -50,3 +48,14 @@ func change_health(health_modifier):
 		health = 10
 	elif health < 0:
 		get_tree().change_scene_to_file("res://Lose-Scene.tscn")
+
+
+func Powerup(powerup):
+	#Bomb Powerup
+	if powerup == 1:
+		bombCount = 3
+	#Firefly Shots
+	if powerup == 2:
+		GlobalVariables.fireflyShot = true
+		await get_tree().create_timer(5).timeout
+		GlobalVariables.fireflyShot = false

@@ -9,7 +9,7 @@ size = Vector2(200, 81.8948)
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(198, 79.3152)
 
-[node name="UFO" type="CharacterBody2D" groups=["enemy"]]
+[node name="UFO" type="CharacterBody2D"]
 position = Vector2(0.911194, -1.91614)
 script = ExtResource("1_vmsbr")
 

@@ -33,6 +33,10 @@ project/assembly_name="SPACE INVADERS"
 render=false
 fire=false
 
+[global_group]
+
+Player=""
+
 [input]
 
 fire={

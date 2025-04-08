@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 
 var speed = 500
-
+var rng = RandomNumberGenerator.new()
+var speedX = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,7 +12,11 @@ func _ready():
 
 
 func _physics_process(delta):
-	var collidedobject = move_and_collide(Vector2(0, -speed*delta))
+	var collidedobject
+	if GlobalVariables.fireflyShot == true:
+		collidedobject = move_and_collide(Vector2(rng.randf_range(-24, 24), -speed*delta))
+	else:
+		collidedobject = move_and_collide(Vector2(0, -speed*delta))
 	if (collidedobject):
 		if "Enemy" in collidedobject.get_collider().name:
 			collidedobject.get_collider().queue_free()
@@ -24,3 +29,9 @@ func _physics_process(delta):
 		
 		queue_free()
 		GlobalVariables.bulletInstanceCount -= 1
+	#UFO Checking
+	if (collidedobject):
+		if "UFO" in collidedobject.get_collider().name:
+			collidedobject.get_collider().resetUFO()  
+
+		

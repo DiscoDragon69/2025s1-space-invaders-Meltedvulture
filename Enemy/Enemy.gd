@@ -3,7 +3,6 @@ extends CharacterBody2D
 var can_shoot = false
 var bullet = preload("res://Bullet-Enemy/Bullet-Enemy.tscn")
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Area2D.connect("area_entered", Callable(self, "_colliding"))
@@ -19,8 +18,8 @@ func _colliding(area):
 	if area.is_in_group("left"):
 		get_parent().global_position.y += 10
 		get_parent().speed = 100
-
-
+	if area.is_in_group("Player"):
+		get_tree().change_scene_to_file("res://Lose-Scene.tscn")
 func fire_bullet() -> void:
 	if (can_shoot):
 		if GlobalVariables.enemyBulletInstanceCount < 5:
