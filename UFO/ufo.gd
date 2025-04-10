@@ -30,8 +30,8 @@ func Spawn():
 
 func resetUFO():
 	print("I HAVE DIES AND POWERUP")
-	#player.Powerup(rng.randi_range(1, 4))
-	player.Powerup(2) 
+	player.Powerup(rng.randi_range(1, 3))
+	#player.Powerup(3) 
 	moving = false
 	global_position.x = 2000
 	speed = 0

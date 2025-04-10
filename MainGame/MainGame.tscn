@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://2v4t50md2vf8"]
+[gd_scene load_steps=13 format=3 uid="uid://2v4t50md2vf8"]
 
 [ext_resource type="AudioStream" uid="uid://v5hbr4hj6bwa" path="res://Audio/backgroundMusic.wav" id="1"]
 [ext_resource type="PackedScene" uid="uid://dux1j34n8hy3q" path="res://Player/Player.tscn" id="2"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Enemy/Enemies.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://bn6t45tk4m45j" path="res://UFO/UFO.tscn" id="5_7c643"]
 [ext_resource type="Script" path="res://ExampleCode.gd" id="6"]
+[ext_resource type="PackedScene" uid="uid://tf1oevqeipdk" path="res://UFO/Powerup Text.tscn" id="10_xvxs1"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(41.9244, 761.152)
@@ -80,9 +81,10 @@ position = Vector2(1287.42, 368.711)
 position = Vector2(-5.37704, -0.768158)
 shape = SubResource("1")
 
-[node name="Player" parent="." instance=ExtResource("2")]
-position = Vector2(642.94, 669.056)
+[node name="Player" parent="." node_paths=PackedStringArray("labelOBJ") instance=ExtResource("2")]
+position = Vector2(640, 660)
 health = 5
+labelOBJ = NodePath("../PowerupText")
 
 [node name="Border_Top" type="CharacterBody2D" parent="." groups=["top"]]
 position = Vector2(646.934, -31.955)
@@ -203,6 +205,9 @@ stream = ExtResource("1")
 autoplay = true
 
 [node name="UFO" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_7c643")]
-position = Vector2(1385.77, 509.768)
+position = Vector2(1049.77, 546.768)
 scale = Vector2(0.75, 0.75)
 player = NodePath("../Player")
+
+[node name="PowerupText" parent="." instance=ExtResource("10_xvxs1")]
+position = Vector2(640, 20)

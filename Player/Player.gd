@@ -6,7 +6,7 @@ var bomb_source = preload ("res://Bullet/Bomb.tscn")
 var bombCount = 0
 var rng = RandomNumberGenerator.new()
 @export var health: int = 100
-
+@export var labelOBJ : Node2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -16,6 +16,7 @@ var rng = RandomNumberGenerator.new()
 func _ready():
 	set_process(true)
 	set_physics_process(true)
+	global_position = Vector2(GlobalVariables.playerPosition, 660)
 	
 func _physics_process(delta):
 	if Input.is_action_pressed("ui_left") and position.x > 40:	
@@ -53,9 +54,15 @@ func change_health(health_modifier):
 func Powerup(powerup):
 	#Bomb Powerup
 	if powerup == 1:
+		labelOBJ.powerUpLabel("3 Bomb Shots")
 		bombCount = 3
 	#Firefly Shots
 	if powerup == 2:
+		labelOBJ.powerUpLabel("Fire Fly Shots!")
 		GlobalVariables.fireflyShot = true
 		await get_tree().create_timer(5).timeout
 		GlobalVariables.fireflyShot = false
+	#Extra Points
+	if powerup == 3:
+		labelOBJ.powerUpLabel("Extra Points")
+		GlobalVariables.scoringInformation["currentScore"] += 100

@@ -4,6 +4,7 @@ var bulletInstanceCount = 0
 var enemyBulletInstanceCount = 0
 var save_file = "user://save.txt"
 var fireflyShot : bool = false
+var playerPosition = 640
 #My Enemy Count System Variable:
 #var enemyCount = 32
 var scoringInformation = {
