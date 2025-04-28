@@ -1,27 +1,26 @@
 [gd_scene load_steps=6 format=3 uid="uid://ciq8ckeac7yxj"]
 
-[ext_resource type="Texture2D" uid="uid://b8bbdckmfcq4b" path="res://Images/tie.png" id="1"]
 [ext_resource type="Script" path="res://Enemy/Enemy.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://cvqs8sdkufloy" path="res://Images/Enemy 1.png" id="2_chkk4"]
 [ext_resource type="Script" path="res://Enemy/ray_cast_2d.gd" id="3_4ji53"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(86.6122, 81.8948)
+size = Vector2(48.7822, 51.147)
 
 [sub_resource type="RectangleShape2D" id="2"]
-size = Vector2(85.4028, 79.3152)
+size = Vector2(52.1776, 61.8323)
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
-position = Vector2(0.911194, -1.91614)
 script = ExtResource("2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.604614, 0.685242)
+position = Vector2(-0.302307, -3.65738)
 shape = SubResource("1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 2.11273)
+unique_name_in_owner = true
 scale = Vector2(0.210826, 0.164444)
-texture = ExtResource("1")
+texture = ExtResource("2_chkk4")
 
 [node name="Area2D" type="Area2D" parent="."]
 

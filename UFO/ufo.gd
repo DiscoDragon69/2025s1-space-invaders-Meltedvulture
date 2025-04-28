@@ -24,12 +24,12 @@ func  _physics_process(delta: float):
 
 func Spawn():
 	moving = true
-	print("I HAVE SPAWEDN")
+	#print("I HAVE SPAWEDN")
 	global_position.x = 1400
 	speed = movingspeed
 
 func resetUFO():
-	print("I HAVE DIES AND POWERUP")
+	#print("I HAVE DIES AND POWERUP")
 	player.Powerup(rng.randi_range(1, 3))
 	#player.Powerup(3) 
 	moving = false

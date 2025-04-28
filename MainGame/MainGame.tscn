@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://2v4t50md2vf8"]
+[gd_scene load_steps=14 format=3 uid="uid://2v4t50md2vf8"]
 
 [ext_resource type="AudioStream" uid="uid://v5hbr4hj6bwa" path="res://Audio/backgroundMusic.wav" id="1"]
 [ext_resource type="PackedScene" uid="uid://dux1j34n8hy3q" path="res://Player/Player.tscn" id="2"]
@@ -10,20 +10,27 @@
 [ext_resource type="PackedScene" uid="uid://bn6t45tk4m45j" path="res://UFO/UFO.tscn" id="5_7c643"]
 [ext_resource type="Script" path="res://ExampleCode.gd" id="6"]
 [ext_resource type="PackedScene" uid="uid://tf1oevqeipdk" path="res://UFO/Powerup Text.tscn" id="10_xvxs1"]
+[ext_resource type="VideoStream" path="res://Video/Ingame Background.ogv" id="11_2ahsg"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(41.9244, 761.152)
 
 [sub_resource type="RectangleShape2D" id="2"]
-size = Vector2(1324.12, 20)
+size = Vector2(1324.12, 69)
 
 [node name="SpaceInvaders" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_left = -0.768188
-offset_top = 1.23187
-offset_right = 1279.23
-offset_bottom = 721.232
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -639.999
+offset_top = -360.0
+offset_right = 639.999
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("4")
 
 [node name="HUD" type="HBoxContainer" parent="."]
@@ -82,19 +89,19 @@ position = Vector2(-5.37704, -0.768158)
 shape = SubResource("1")
 
 [node name="Player" parent="." node_paths=PackedStringArray("labelOBJ") instance=ExtResource("2")]
-position = Vector2(640, 660)
+position = Vector2(640, 680)
 health = 5
 labelOBJ = NodePath("../PowerupText")
 
 [node name="Border_Top" type="CharacterBody2D" parent="." groups=["top"]]
-position = Vector2(646.934, -31.955)
+position = Vector2(641.999, -212)
 
 [node name="TopCollider" type="CollisionShape2D" parent="Border_Top" groups=["top"]]
-position = Vector2(0, 1)
+position = Vector2(-2.16583, 176.723)
 shape = SubResource("2")
 
 [node name="Border_Bottom" type="CharacterBody2D" parent="." groups=["bottom"]]
-position = Vector2(646.934, 748.484)
+position = Vector2(640.999, 757)
 
 [node name="TopCollider" type="CollisionShape2D" parent="Border_Bottom" groups=["top"]]
 position = Vector2(0, 1)
@@ -205,9 +212,22 @@ stream = ExtResource("1")
 autoplay = true
 
 [node name="UFO" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_7c643")]
-position = Vector2(1049.77, 546.768)
+position = Vector2(1383, 34.0001)
 scale = Vector2(0.75, 0.75)
 player = NodePath("../Player")
 
 [node name="PowerupText" parent="." instance=ExtResource("10_xvxs1")]
 position = Vector2(640, 20)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+z_index = -5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("11_2ahsg")
+autoplay = true
+expand = true
+loop = true

@@ -3,19 +3,16 @@ extends CharacterBody2D
 var movement_speed = 300
 var bullet_source = preload ("res://Bullet/Bullet.tscn")
 var bomb_source = preload ("res://Bullet/Bomb.tscn")
-var bombCount = 0
+var bombCount = 3
 var rng = RandomNumberGenerator.new()
 @export var health: int = 100
 @export var labelOBJ : Node2D
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_process(true)
 	set_physics_process(true)
+	GlobalVariables.fireflyShot = false
 	global_position = Vector2(GlobalVariables.playerPosition, 660)
 	
 func _physics_process(delta):
@@ -28,7 +25,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("fire"):
 		if GlobalVariables.bulletInstanceCount < 3:
 			var bullet_instance = bullet_source.instantiate()
-			bullet_instance.position = Vector2(position.x, position.y-20)
+			bullet_instance.position = Vector2(position.x, position.y-35)
 			get_tree().get_root().add_child(bullet_instance)
 		
 
@@ -37,7 +34,7 @@ func _process(delta):
 		if bombCount >= 1:
 			bombCount -= 1
 			var bomb_instance = bomb_source.instantiate()
-			bomb_instance.position = Vector2(position.x, position.y-20)
+			bomb_instance.position = Vector2(position.x, position.y-35)
 			get_tree().get_root().add_child(bomb_instance)
 			
 			
@@ -45,8 +42,10 @@ func _process(delta):
 
 func change_health(health_modifier):
 	health = health + health_modifier
+	GlobalVariables.playerHealth = health
 	if health > 10:
 		health = 10
+		
 	elif health < 0:
 		get_tree().change_scene_to_file("res://Lose-Scene.tscn")
 

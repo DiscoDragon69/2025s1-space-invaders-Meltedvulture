@@ -1,19 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://c3hd14a3eciat"]
 
-[ext_resource type="Texture2D" uid="uid://bbdwux7rulfh6" path="res://Images/bullet-enemy.png" id="1"]
 [ext_resource type="Script" path="res://Bullet-Enemy/Bullet-Enemy.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://dx6y4atxmaxo4" path="res://Images/Enemy Bullet.png" id="2_bikej"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(9.27758, 8.83708)
+size = Vector2(9.27758, 36)
 
 [node name="Bullet" type="CharacterBody2D"]
 z_index = 2
-position = Vector2(193.956, 142.277)
 script = ExtResource("2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0.768188, 0.768158)
-texture = ExtResource("1")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_bikej")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
 shape = SubResource("1")

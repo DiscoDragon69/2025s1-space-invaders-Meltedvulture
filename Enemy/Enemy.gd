@@ -1,7 +1,11 @@
 extends CharacterBody2D
 
 var can_shoot = false
+var shield = preload("res://Enemy/Shield.tscn")
 var bullet = preload("res://Bullet-Enemy/Bullet-Enemy.tscn")
+var enemyList = ["res://Images/Enemy 1.png",
+				"res://Images/Enemy 2.png",
+				"res://Images/Enemy 3.png"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,6 +14,16 @@ func _ready():
 	rng.randomize()
 	$Timer.wait_time = rng.randf_range(2.0, 30.0)
 	$Timer.start()
+	var chosenEnemy = enemyList[rng.randi_range(0, 2)]
+	%Sprite2D.texture = load(chosenEnemy)
+	
+	if chosenEnemy == enemyList[1]:
+		scale = Vector2(1.25, 1.25)
+		var shieldInstance = shield.instantiate()
+		add_child(shieldInstance)
+	if chosenEnemy == enemyList[2]:
+		scale = Vector2(0.8, 0.8)
+	
 
 func _colliding(area):
 	if area.is_in_group("right"):

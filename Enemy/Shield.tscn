@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://1wql2kqp7rpw"]
+
+[ext_resource type="Texture2D" uid="uid://bsgbt84v3gjky" path="res://Images/Shield.png" id="1_dkw6l"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(90.6667, 89.3333)
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(90.6667, 89.3333)
+
+[node name="Shield" type="CharacterBody2D" groups=["enemy"]]
+scale = Vector2(0.75, 0.75)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="Shield Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_dkw6l")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("2")

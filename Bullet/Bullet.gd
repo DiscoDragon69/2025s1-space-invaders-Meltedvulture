@@ -17,6 +17,7 @@ func _physics_process(delta):
 		collidedobject = move_and_collide(Vector2(rng.randf_range(-24, 24), -speed*delta))
 	else:
 		collidedobject = move_and_collide(Vector2(0, -speed*delta))
+
 	if (collidedobject):
 		if "Enemy" in collidedobject.get_collider().name:
 			collidedobject.get_collider().queue_free()
@@ -26,12 +27,14 @@ func _physics_process(delta):
 			#print(GlobalVariables.enemyCount)
 			#if GlobalVariables.enemyCount < 1:
 				#get_tree().change_scene_to_file("res://Menu/Menu.tscn")
+
+		if "Shield" in collidedobject.get_collider().name:
+			collidedobject.get_collider().queue_free()
 		
-		queue_free()
-		GlobalVariables.bulletInstanceCount -= 1
-	#UFO Checking
-	if (collidedobject):
+		#UFO Checking
 		if "UFO" in collidedobject.get_collider().name:
 			collidedobject.get_collider().resetUFO()  
 
-		
+
+		GlobalVariables.bulletInstanceCount -= 1
+		queue_free()

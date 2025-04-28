@@ -1,23 +1,22 @@
 [gd_scene load_steps=5 format=3 uid="uid://dux1j34n8hy3q"]
 
-[ext_resource type="Texture2D" uid="uid://cev0l08u50s6y" path="res://Images/the_razor_crest___top_view_by_superherotimefan_deaq55q-pre.png" id="1"]
 [ext_resource type="Script" path="res://Player/Player.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://d24u0ytsqn1n6" path="res://Images/SpaceShip Sprite.png" id="2_h0xav"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(56.5054, 38.781)
+size = Vector2(76.1376, 56.8998)
 
 [sub_resource type="RectangleShape2D" id="2"]
-size = Vector2(79.9866, 105.976)
+size = Vector2(79.9866, 103.388)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1")
+scale = Vector2(0.195, 0.195)
+texture = ExtResource("2_h0xav")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.06879, 8.55011)
 shape = SubResource("1")
 
 [node name="Area2D" type="Area2D" parent="." groups=["Player"]]
@@ -25,5 +24,5 @@ position = Vector2(0, -19)
 scale = Vector2(1, 1.25)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-0.299378, 3.29329)
+position = Vector2(0, 1.294)
 shape = SubResource("2")
