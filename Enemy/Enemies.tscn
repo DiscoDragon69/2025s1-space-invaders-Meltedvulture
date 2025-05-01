@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ciq8ckeac7yxj" path="res://Enemy/Enemy.tscn" id="2_eg2eh"]
 
 [node name="Enemies" type="Node2D"]
+z_index = 1
 script = ExtResource("1_ombb1")
 
 [node name="Enemy" parent="." instance=ExtResource("2_eg2eh")]
@@ -101,3 +102,9 @@ position = Vector2(-579.789, 404.497)
 
 [node name="Enemy32" parent="." instance=ExtResource("2_eg2eh")]
 position = Vector2(-472.219, 404.428)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

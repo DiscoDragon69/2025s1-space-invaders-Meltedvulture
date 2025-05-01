@@ -2,7 +2,6 @@ extends Control
 
 @onready var animationPlayer = $AnimationPlayer
 @onready var Player = $Player
-@onready var enemyReference = $Enemies
 @onready var LevelLabel = %LevelLabel
 var rng = RandomNumberGenerator.new()
 var enemyScene = preload("res://Enemy/Enemies.tscn")
@@ -15,7 +14,7 @@ func _ready():
 	
 func _process(delta):
 	%Health.update_health($Player.health)
-	$HUD/CurrentScore.text = str(GlobalVariables.scoringInformation["currentScore"])
+	$HUD/CurrentScore.text = str("Current Score: ", GlobalVariables.scoringInformation["currentScore"])
 
 func rollSceneModifiers(pickedScene):
 	pass
@@ -24,10 +23,10 @@ func rollSceneModifiers(pickedScene):
 		#return 200
 
 func newRound():
-	if enemyReference.get_child_count() == 1:
+	if GlobalVariables.enemyReference.get_child_count() == 2:
+		GlobalVariables.enemyReference.queue_free()
 		animationPlayer.play("Win Label Flash", -1, 1)
 		await animationPlayer.animation_finished
-		await get_tree().create_timer(1).timeout
 		GlobalVariables.Level += 1
 		LevelLabel.text = str("Level: ", GlobalVariables.Level)
 		var enemy_instance = enemyScene.instantiate()

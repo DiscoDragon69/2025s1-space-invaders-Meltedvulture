@@ -46,7 +46,7 @@ func _colliding(area):
 
 func fire_bullet() -> void:
 	if (can_shoot):
-		if GlobalVariables.enemyBulletInstanceCount < 5:
+		if GlobalVariables.enemyBulletInstanceCount < 100:
 			var bulletInstance = bullet.instantiate()
-			bulletInstance.position = Vector2(global_position.x, global_position.y+20)
+			bulletInstance.position = Vector2(global_position.x, global_position.y+30)
 			get_tree().get_root().add_child(bulletInstance)

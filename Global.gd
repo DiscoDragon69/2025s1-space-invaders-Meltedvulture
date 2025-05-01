@@ -7,6 +7,7 @@ var fireflyShot : bool = false
 var playerHealth = 5
 var enemySpeed = -10
 var Level = 1
+var enemyReference
 var mainGame
 #My Enemy Count System Variable:
 #var enemyCount = 32

@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://2v4t50md2vf8"]
+[gd_scene load_steps=19 format=3 uid="uid://2v4t50md2vf8"]
 
 [ext_resource type="AudioStream" uid="uid://v5hbr4hj6bwa" path="res://Audio/backgroundMusic.wav" id="1"]
 [ext_resource type="PackedScene" uid="uid://dux1j34n8hy3q" path="res://Player/Player.tscn" id="2"]
+[ext_resource type="LabelSettings" uid="uid://bg0ykfm01dq70" path="res://assets/PointsLabelSettings.tres" id="3_kr5bp"]
 [ext_resource type="Script" path="res://MainGame/Health.gd" id="3_vjhax"]
 [ext_resource type="Script" path="res://MainGame/MainGame.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://ca0ymj7oe0pxs" path="res://Images/heart_full.png" id="4_tev7b"]
@@ -19,6 +20,9 @@ size = Vector2(41.9244, 761.152)
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(1324.12, 69)
 
+[sub_resource type="Animation" id="Animation_qvna1"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_tb6ho"]
 resource_name = "Win Label Flash"
 length = 3.0
@@ -35,9 +39,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-
-[sub_resource type="Animation" id="Animation_qvna1"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k4nrb"]
 _data = {
@@ -62,33 +63,28 @@ script = ExtResource("4")
 
 [node name="HUD" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -411.0
+offset_left = 799.999
+offset_right = 1211.0
 offset_bottom = 45.0
-grow_horizontal = 0
+alignment = 1
 script = ExtResource("6")
-
-[node name="CurrentScoreLabel" type="Label" parent="HUD"]
-layout_mode = 2
-text = "Current Score"
 
 [node name="CurrentScore" type="Label" parent="HUD"]
 layout_mode = 2
 text = "0"
+label_settings = ExtResource("3_kr5bp")
 
 [node name="Border_Left" type="Area2D" parent="." groups=["left"]]
 position = Vector2(-1.53629, 369.479)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Border_Left"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border_Left" groups=["left"]]
 position = Vector2(-5.37704, -0.768158)
 shape = SubResource("1")
 
 [node name="Border_Right" type="Area2D" parent="." groups=["right"]]
 position = Vector2(1287.42, 368.711)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Border_Right"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border_Right" groups=["right"]]
 position = Vector2(-5.37704, -0.768158)
 shape = SubResource("1")
 
@@ -116,7 +112,7 @@ stream = ExtResource("1")
 autoplay = true
 
 [node name="UFO" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_7c643")]
-position = Vector2(1383, 34.0001)
+position = Vector2(1383, 78)
 scale = Vector2(0.75, 0.75)
 player = NodePath("../Player")
 
