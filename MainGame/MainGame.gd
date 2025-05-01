@@ -1,25 +1,35 @@
 extends Control
 
-@export var countdown_max: int = 60
-var current_timer
+@onready var animationPlayer = $AnimationPlayer
 @onready var Player = $Player
+@onready var enemyReference = $Enemies
+@onready var LevelLabel = %LevelLabel
+var rng = RandomNumberGenerator.new()
+var enemyScene = preload("res://Enemy/Enemies.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	current_timer = countdown_max
-	$HUD/Countdown.text = str(current_timer)
-	
-	while current_timer > 0:
-		await get_tree().create_timer(1).timeout
-		current_timer -= 1
-		$HUD/Countdown.text = str(current_timer)
-	get_tree().change_scene_to_file("res://Lose-Scene.tscn")
-	print("Game Over")
+	LevelLabel.text = str("Level: ", GlobalVariables.Level)
+	GlobalVariables.mainGame = self
+	rollSceneModifiers(rng.randi_range(1, 1))
 	
 func _process(delta):
-	$HUD/Health.update_health($Player.health)
+	%Health.update_health($Player.health)
 	$HUD/CurrentScore.text = str(GlobalVariables.scoringInformation["currentScore"])
-	if get_tree().get_nodes_in_group("enemy").size() == 0:
+
+func rollSceneModifiers(pickedScene):
+	pass
+	#Enemy Speed Increase
+	#if pickedScene == 1:
+		#return 200
+
+func newRound():
+	if enemyReference.get_child_count() == 1:
+		animationPlayer.play("Win Label Flash", -1, 1)
+		await animationPlayer.animation_finished
 		await get_tree().create_timer(1).timeout
-		GlobalVariables.playerPosition = Player.global_position.x 
-		get_tree().change_scene_to_file("res://MainGame/MainGame.tscn")
+		GlobalVariables.Level += 1
+		LevelLabel.text = str("Level: ", GlobalVariables.Level)
+		var enemy_instance = enemyScene.instantiate()
+		enemy_instance.position = Vector2(725, 0)
+		get_tree().get_root().add_child(enemy_instance)

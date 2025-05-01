@@ -1,22 +1,49 @@
-[gd_scene load_steps=14 format=3 uid="uid://2v4t50md2vf8"]
+[gd_scene load_steps=18 format=3 uid="uid://2v4t50md2vf8"]
 
 [ext_resource type="AudioStream" uid="uid://v5hbr4hj6bwa" path="res://Audio/backgroundMusic.wav" id="1"]
 [ext_resource type="PackedScene" uid="uid://dux1j34n8hy3q" path="res://Player/Player.tscn" id="2"]
-[ext_resource type="PackedScene" uid="uid://ciq8ckeac7yxj" path="res://Enemy/Enemy.tscn" id="3"]
 [ext_resource type="Script" path="res://MainGame/Health.gd" id="3_vjhax"]
 [ext_resource type="Script" path="res://MainGame/MainGame.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://ca0ymj7oe0pxs" path="res://Images/heart_full.png" id="4_tev7b"]
-[ext_resource type="Script" path="res://Enemy/Enemies.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://bn6t45tk4m45j" path="res://UFO/UFO.tscn" id="5_7c643"]
 [ext_resource type="Script" path="res://ExampleCode.gd" id="6"]
 [ext_resource type="PackedScene" uid="uid://tf1oevqeipdk" path="res://UFO/Powerup Text.tscn" id="10_xvxs1"]
 [ext_resource type="VideoStream" path="res://Video/Ingame Background.ogv" id="11_2ahsg"]
+[ext_resource type="PackedScene" uid="uid://cgl3lh2gmlksx" path="res://Enemy/Enemies.tscn" id="11_uuyaq"]
+[ext_resource type="LabelSettings" uid="uid://dmirjlsvd8fa8" path="res://assets/LevellabelSettings.tres" id="12_3gpde"]
+[ext_resource type="LabelSettings" uid="uid://dlk57v4ova05e" path="res://assets/LevelWinLabelSettings.tres" id="12_odgvu"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(41.9244, 761.152)
 
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(1324.12, 69)
+
+[sub_resource type="Animation" id="Animation_tb6ho"]
+resource_name = "Win Label Flash"
+length = 3.0
+step = 0.0333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WinLabel:label_settings:font_color")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.733333, 0.966667, 1.23333, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qvna1"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k4nrb"]
+_data = {
+"RESET": SubResource("Animation_qvna1"),
+"Win Label Flash": SubResource("Animation_tb6ho")
+}
 
 [node name="SpaceInvaders" type="Control"]
 layout_mode = 3
@@ -34,13 +61,14 @@ grow_vertical = 2
 script = ExtResource("4")
 
 [node name="HUD" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 411.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -411.0
 offset_bottom = 45.0
+grow_horizontal = 0
 script = ExtResource("6")
-
-[node name="Countdown" type="Label" parent="HUD"]
-layout_mode = 2
 
 [node name="CurrentScoreLabel" type="Label" parent="HUD"]
 layout_mode = 2
@@ -49,30 +77,6 @@ text = "Current Score"
 [node name="CurrentScore" type="Label" parent="HUD"]
 layout_mode = 2
 text = "0"
-
-[node name="Health" type="HBoxContainer" parent="HUD"]
-layout_mode = 2
-script = ExtResource("3_vjhax")
-
-[node name="1" type="TextureRect" parent="HUD/Health"]
-layout_mode = 2
-texture = ExtResource("4_tev7b")
-
-[node name="2" type="TextureRect" parent="HUD/Health"]
-layout_mode = 2
-texture = ExtResource("4_tev7b")
-
-[node name="3" type="TextureRect" parent="HUD/Health"]
-layout_mode = 2
-texture = ExtResource("4_tev7b")
-
-[node name="4" type="TextureRect" parent="HUD/Health"]
-layout_mode = 2
-texture = ExtResource("4_tev7b")
-
-[node name="5" type="TextureRect" parent="HUD/Health"]
-layout_mode = 2
-texture = ExtResource("4_tev7b")
 
 [node name="Border_Left" type="Area2D" parent="." groups=["left"]]
 position = Vector2(-1.53629, 369.479)
@@ -107,106 +111,6 @@ position = Vector2(640.999, 757)
 position = Vector2(0, 1)
 shape = SubResource("2")
 
-[node name="Enemies" type="Node2D" parent="."]
-position = Vector2(705.16, 3.84076)
-script = ExtResource("5")
-
-[node name="Enemy" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(226.241, 73.6566)
-
-[node name="Enemy2" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(332.707, 74.3564)
-
-[node name="Enemy3" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(7.31857, 74.4248)
-
-[node name="Enemy4" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(116.089, 74.3564)
-
-[node name="Enemy5" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(-206.995, 74.4248)
-
-[node name="Enemy6" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(-98.2243, 74.3564)
-
-[node name="Enemy7" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(-423.612, 74.4248)
-
-[node name="Enemy8" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(-314.842, 74.3564)
-
-[node name="Enemy9" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(71.168, 183.27)
-
-[node name="Enemy10" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(177.634, 183.97)
-
-[node name="Enemy11" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(-147.754, 184.038)
-
-[node name="Enemy12" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(-38.984, 183.97)
-
-[node name="Enemy13" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(-362.067, 184.038)
-
-[node name="Enemy14" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(-253.297, 183.97)
-
-[node name="Enemy15" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(-578.685, 184.038)
-
-[node name="Enemy16" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(-469.915, 183.97)
-
-[node name="Enemy17" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(223.936, 294.115)
-
-[node name="Enemy18" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(330.402, 294.815)
-
-[node name="Enemy19" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(5.01413, 294.883)
-
-[node name="Enemy20" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(113.785, 294.815)
-
-[node name="Enemy21" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(-209.299, 294.883)
-
-[node name="Enemy22" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(-100.529, 294.815)
-
-[node name="Enemy23" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(-425.917, 294.883)
-
-[node name="Enemy24" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(-317.146, 294.815)
-
-[node name="Enemy25" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(68.864, 403.728)
-
-[node name="Enemy26" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(175.33, 404.428)
-
-[node name="Enemy27" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(-150.058, 404.497)
-
-[node name="Enemy28" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(-41.288, 404.428)
-
-[node name="Enemy29" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(-364.372, 404.497)
-
-[node name="Enemy30" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(-255.601, 404.428)
-
-[node name="Enemy31" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(-579.789, 404.497)
-
-[node name="Enemy32" parent="Enemies" instance=ExtResource("3")]
-position = Vector2(-472.219, 404.428)
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("1")
 autoplay = true
@@ -217,7 +121,7 @@ scale = Vector2(0.75, 0.75)
 player = NodePath("../Player")
 
 [node name="PowerupText" parent="." instance=ExtResource("10_xvxs1")]
-position = Vector2(640, 20)
+position = Vector2(639.999, 76)
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 z_index = -5
@@ -231,3 +135,70 @@ stream = ExtResource("11_2ahsg")
 autoplay = true
 expand = true
 loop = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k4nrb")
+}
+
+[node name="WinLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -289.999
+offset_top = -271.0
+offset_right = 290.001
+offset_bottom = -153.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level Cleared!"
+label_settings = ExtResource("12_odgvu")
+horizontal_alignment = 1
+
+[node name="Enemies" parent="." instance=ExtResource("11_uuyaq")]
+position = Vector2(725, 0)
+
+[node name="Health" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 15.999
+offset_right = 296.999
+offset_bottom = 45.0
+script = ExtResource("3_vjhax")
+
+[node name="1" type="TextureRect" parent="Health"]
+layout_mode = 2
+texture = ExtResource("4_tev7b")
+
+[node name="2" type="TextureRect" parent="Health"]
+layout_mode = 2
+texture = ExtResource("4_tev7b")
+
+[node name="3" type="TextureRect" parent="Health"]
+layout_mode = 2
+texture = ExtResource("4_tev7b")
+
+[node name="4" type="TextureRect" parent="Health"]
+layout_mode = 2
+texture = ExtResource("4_tev7b")
+
+[node name="5" type="TextureRect" parent="Health"]
+layout_mode = 2
+texture = ExtResource("4_tev7b")
+
+[node name="LevelLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_right = 60.0
+offset_bottom = 50.0
+grow_horizontal = 2
+text = "Level 1"
+label_settings = ExtResource("12_3gpde")
+horizontal_alignment = 1

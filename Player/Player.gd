@@ -12,8 +12,8 @@ var rng = RandomNumberGenerator.new()
 func _ready():
 	set_process(true)
 	set_physics_process(true)
+	health = GlobalVariables.playerHealth
 	GlobalVariables.fireflyShot = false
-	global_position = Vector2(GlobalVariables.playerPosition, 660)
 	
 func _physics_process(delta):
 	if Input.is_action_pressed("ui_left") and position.x > 40:	
@@ -22,8 +22,8 @@ func _physics_process(delta):
 		move_and_collide(Vector2(movement_speed * delta, 0))
 
 func _process(delta):
-	if Input.is_action_just_pressed("fire"):
-		if GlobalVariables.bulletInstanceCount < 3:
+	if Input.is_action_pressed("fire"):
+		if GlobalVariables.bulletInstanceCount < 300:
 			var bullet_instance = bullet_source.instantiate()
 			bullet_instance.position = Vector2(position.x, position.y-35)
 			get_tree().get_root().add_child(bullet_instance)

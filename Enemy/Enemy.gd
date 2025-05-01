@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+var hasShield = false
 var can_shoot = false
 var shield = preload("res://Enemy/Shield.tscn")
 var bullet = preload("res://Bullet-Enemy/Bullet-Enemy.tscn")
@@ -12,7 +13,7 @@ func _ready():
 	$Area2D.connect("area_entered", Callable(self, "_colliding"))
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	$Timer.wait_time = rng.randf_range(2.0, 30.0)
+	$Timer.wait_time = rng.randf_range(2.0, 8.0)
 	$Timer.start()
 	var chosenEnemy = enemyList[rng.randi_range(0, 2)]
 	%Sprite2D.texture = load(chosenEnemy)
@@ -21,19 +22,28 @@ func _ready():
 		scale = Vector2(1.25, 1.25)
 		var shieldInstance = shield.instantiate()
 		add_child(shieldInstance)
+		hasShield = true
 	if chosenEnemy == enemyList[2]:
-		scale = Vector2(0.8, 0.8)
+		scale = Vector2(0.75, 0.75)
+
+	if hasShield == false:
+		if rng.randi_range(1, 6) == 3:
+			var shieldInstance = shield.instantiate()
+			add_child(shieldInstance)
+			hasShield = true
 	
 
 func _colliding(area):
 	if area.is_in_group("right"):
 		get_parent().global_position.y += 10
-		get_parent().speed = -100
+		GlobalVariables.enemySpeed = -10
 	if area.is_in_group("left"):
 		get_parent().global_position.y += 10
-		get_parent().speed = 100
+		GlobalVariables.enemySpeed = 10
 	if area.is_in_group("Player"):
 		get_tree().change_scene_to_file("res://Lose-Scene.tscn")
+
+
 func fire_bullet() -> void:
 	if (can_shoot):
 		if GlobalVariables.enemyBulletInstanceCount < 5:

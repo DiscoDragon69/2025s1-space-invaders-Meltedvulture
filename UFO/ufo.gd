@@ -8,12 +8,9 @@ var movingspeed = 150
 @export var player : CharacterBody2D
 
 
-func _process(delta):
-	if loop == 1 and moving == false:
-		if rng.randi_range(1, 50) == 50:
-			Spawn()
-		
-	
+func _ready():
+	ufoLoop()
+
 func  _physics_process(delta: float):
 	if global_position.x < -100:
 		moving = false
@@ -35,3 +32,10 @@ func resetUFO():
 	moving = false
 	global_position.x = 2000
 	speed = 0
+
+func ufoLoop():
+	await get_tree().create_timer(1).timeout
+	if moving == false:
+		if rng.randi_range(1, 25) == 15:
+			Spawn()
+	ufoLoop()
