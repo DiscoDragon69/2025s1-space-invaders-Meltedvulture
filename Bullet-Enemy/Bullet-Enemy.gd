@@ -12,9 +12,7 @@ func _ready():
 func _physics_process(delta):
 	var collided_object = move_and_collide(Vector2(0, +speed*delta*0.4))
 	if (collided_object):
-		if "Enemy" in collided_object.get_collider().name:
-			pass
-		elif "Player" in collided_object.get_collider().name:
+		if "Player" in collided_object.get_collider().name:
 			queue_free()
 			GlobalVariables.enemyBulletInstanceCount -= 1
 			collided_object.get_collider().change_health(-1)

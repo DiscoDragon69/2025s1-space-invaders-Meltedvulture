@@ -5,6 +5,7 @@ var loop = 1
 var moving : bool = false
 var speed = 0
 var movingspeed = 150
+@onready var timer = $Timer
 @export var player : CharacterBody2D
 
 
@@ -28,14 +29,15 @@ func Spawn():
 func resetUFO():
 	#print("I HAVE DIES AND POWERUP")
 	player.Powerup(rng.randi_range(1, 3))
-	#player.Powerup(3) 
+	#player.Powerup(2) 
 	moving = false
 	global_position.x = 2000
 	speed = 0
 
 func ufoLoop():
-	await get_tree().create_timer(1).timeout
+	timer.start(1)
+	await timer.timeout
 	if moving == false:
-		if rng.randi_range(1, 25) == 15:
+		if rng.randi_range(1, 30) == 15:
 			Spawn()
 	ufoLoop()

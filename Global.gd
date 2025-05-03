@@ -2,13 +2,22 @@ extends Node
 
 var bulletInstanceCount = 0
 var enemyBulletInstanceCount = 0
+var maxBullets = 3
+var bulletSpeed = 500
 var save_file = "user://save.txt"
 var fireflyShot : bool = false
 var playerHealth = 5
 var enemySpeed = -10
 var Level = 1
+
+#Global Node References
 var enemyReference
 var mainGame
+var UpgradesUI
+var player 
+
+
+
 #My Enemy Count System Variable:
 #var enemyCount = 32
 var scoringInformation = {

@@ -5,6 +5,7 @@ var bullet_source = preload ("res://Bullet/Bullet.tscn")
 var bomb_source = preload ("res://Bullet/Bomb.tscn")
 var bombCount = 3
 var rng = RandomNumberGenerator.new()
+@onready var timer = %"Global Timer"
 @export var health: int = 100
 @export var labelOBJ : Node2D
 
@@ -13,6 +14,7 @@ func _ready():
 	set_process(true)
 	set_physics_process(true)
 	health = GlobalVariables.playerHealth
+	GlobalVariables.player = self
 	GlobalVariables.fireflyShot = false
 	
 func _physics_process(delta):
@@ -22,8 +24,8 @@ func _physics_process(delta):
 		move_and_collide(Vector2(movement_speed * delta, 0))
 
 func _process(delta):
-	if Input.is_action_pressed("fire"):
-		if GlobalVariables.bulletInstanceCount < 300:
+	if Input.is_action_just_pressed("fire"):
+		if GlobalVariables.bulletInstanceCount < GlobalVariables.maxBullets + 0:
 			var bullet_instance = bullet_source.instantiate()
 			bullet_instance.position = Vector2(position.x, position.y-35)
 			get_tree().get_root().add_child(bullet_instance)
@@ -59,7 +61,8 @@ func Powerup(powerup):
 	if powerup == 2:
 		labelOBJ.powerUpLabel("Fire Fly Shots!")
 		GlobalVariables.fireflyShot = true
-		await get_tree().create_timer(5).timeout
+		timer.start(5)
+		await timer.timeout
 		GlobalVariables.fireflyShot = false
 	#Extra Points
 	if powerup == 3:

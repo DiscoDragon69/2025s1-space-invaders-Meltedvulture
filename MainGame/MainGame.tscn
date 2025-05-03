@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://2v4t50md2vf8"]
+[gd_scene load_steps=23 format=3 uid="uid://2v4t50md2vf8"]
 
 [ext_resource type="AudioStream" uid="uid://v5hbr4hj6bwa" path="res://Audio/backgroundMusic.wav" id="1"]
 [ext_resource type="PackedScene" uid="uid://dux1j34n8hy3q" path="res://Player/Player.tscn" id="2"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cgl3lh2gmlksx" path="res://Enemy/Enemies.tscn" id="11_uuyaq"]
 [ext_resource type="LabelSettings" uid="uid://dmirjlsvd8fa8" path="res://assets/LevellabelSettings.tres" id="12_3gpde"]
 [ext_resource type="LabelSettings" uid="uid://dlk57v4ova05e" path="res://assets/LevelWinLabelSettings.tres" id="12_odgvu"]
+[ext_resource type="PackedScene" uid="uid://bbv6s412cqbwj" path="res://MainGame/Upgrades UI.tscn" id="14_n27qm"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(41.9244, 761.152)
@@ -22,6 +23,18 @@ size = Vector2(1324.12, 69)
 
 [sub_resource type="Animation" id="Animation_qvna1"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UpgradesUi:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(640, 795)]
+}
 
 [sub_resource type="Animation" id="Animation_tb6ho"]
 resource_name = "Win Label Flash"
@@ -40,9 +53,59 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_8xb6y"]
+resource_name = "Upgrade Fly in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UpgradesUi:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.533333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(640, 795), Vector2(639.999, -3), Vector2(639.999, 75)]
+}
+
+[sub_resource type="Animation" id="Animation_hqmqh"]
+resource_name = "Upgrade Fly Out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UpgradesUi:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(640, 120), Vector2(639.999, 200), Vector2(639.999, -626)]
+}
+
+[sub_resource type="Animation" id="Animation_w4e00"]
+resource_name = "Upgrade Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UpgradesUi:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(639.999, 75), Vector2(639.999, 100), Vector2(639.999, 75)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k4nrb"]
 _data = {
 "RESET": SubResource("Animation_qvna1"),
+"Upgrade Fly Out": SubResource("Animation_hqmqh"),
+"Upgrade Fly in": SubResource("Animation_8xb6y"),
+"Upgrade Idle": SubResource("Animation_w4e00"),
 "Win Label Flash": SubResource("Animation_tb6ho")
 }
 
@@ -198,3 +261,11 @@ grow_horizontal = 2
 text = "Level 1"
 label_settings = ExtResource("12_3gpde")
 horizontal_alignment = 1
+
+[node name="Global Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="UpgradesUi" parent="." node_paths=PackedStringArray("animationPlayer") instance=ExtResource("14_n27qm")]
+position = Vector2(640, 795)
+animationPlayer = NodePath("../AnimationPlayer")

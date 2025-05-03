@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-var speed = 500
+var speed = GlobalVariables.bulletSpeed
 var rng = RandomNumberGenerator.new()
 var speedX = 0
 
@@ -35,7 +35,9 @@ func _physics_process(delta):
 		#UFO Checking
 		if "UFO" in collidedobject.get_collider().name:
 			collidedobject.get_collider().resetUFO()  
-
+			
+		if "Upgrade Ship" in collidedobject.get_collider().name:
+			collidedobject.get_collider().activateUpgrade()
 
 		GlobalVariables.bulletInstanceCount -= 1
 		queue_free()

@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cf7nkvr13t5tq"]
+[gd_scene load_steps=4 format=3 uid="uid://cf7nkvr13t5tq"]
 
+[ext_resource type="VideoStream" path="res://Video/Space-Background.ogv" id="1_al4bm"]
 [ext_resource type="Script" path="res://OtherScenes/return_button.gd" id="1_yj5jw"]
-[ext_resource type="Texture2D" uid="uid://cj16vvwnj7v8o" path="res://OtherScenes/Horse.jpeg" id="2_lf55l"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vuf10"]
+font_size = 48
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -11,40 +14,51 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Layout" type="VBoxContainer" parent="."]
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+stream = ExtResource("1_al4bm")
+autoplay = true
+expand = true
+loop = true
 
-[node name="Title" type="Label" parent="Layout"]
-layout_mode = 2
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -164.0
+offset_right = 164.0
+offset_bottom = 67.0
+grow_horizontal = 2
 text = "Options Menu"
+label_settings = SubResource("LabelSettings_vuf10")
 horizontal_alignment = 1
 
-[node name="Contents" type="HBoxContainer" parent="Layout"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="ReturnButton" type="Button" parent="Layout"]
-layout_mode = 2
+[node name="ReturnButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -86.0
+offset_top = -119.0
+offset_right = 89.0
+offset_bottom = -87.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(87.5, 16)
 size_flags_horizontal = 4
 size_flags_vertical = 10
 text = "Return to Main Menu"
 script = ExtResource("1_yj5jw")
 
-[node name="Horse" type="Sprite2D" parent="Layout"]
-position = Vector2(647, 328)
-scale = Vector2(1.85802, 1.85802)
-texture = ExtResource("2_lf55l")
-
-[node name="Label" type="Label" parent="Layout"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 2
-text = "What can you eat??"
-horizontal_alignment = 1
-
-[connection signal="pressed" from="Layout/ReturnButton" to="Layout/ReturnButton" method="_on_return_pressed"]
+[connection signal="pressed" from="ReturnButton" to="ReturnButton" method="_on_return_pressed"]

@@ -1,0 +1,143 @@
+[gd_scene load_steps=11 format=3 uid="uid://bbv6s412cqbwj"]
+
+[ext_resource type="LabelSettings" uid="uid://b2iyxo348xlt5" path="res://assets/UpgradesUITitles.tres" id="1_fwmci"]
+[ext_resource type="Script" path="res://MainGame/upgradesUI.gd" id="1_ti5ie"]
+[ext_resource type="Texture2D" uid="uid://bta07g4osovgy" path="res://Images/upgrade Frame.png" id="2_hh2qo"]
+[ext_resource type="Script" path="res://MainGame/UpgradeShip.gd" id="2_hxsra"]
+[ext_resource type="LabelSettings" uid="uid://b1ykp7x27loea" path="res://assets/UpgradeTextSettings.tres" id="3_arpcj"]
+[ext_resource type="LabelSettings" uid="uid://coopagmf3843q" path="res://assets/UpgradeDescriptionSettings.tres" id="4_7u2a0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sse2w"]
+size = Vector2(150, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oeavv"]
+atlas = ExtResource("2_hh2qo")
+region = Rect2(0, 0, 512, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_703me"]
+atlas = ExtResource("2_hh2qo")
+region = Rect2(512, 0, 512, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dkppu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oeavv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_703me")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 15.0
+}]
+
+[node name="UpgradesUi" type="Node2D"]
+script = ExtResource("1_ti5ie")
+
+[node name="Title" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -70.5
+offset_right = 70.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Choose 1 Supply Ship"
+label_settings = ExtResource("1_fwmci")
+
+[node name="Upgrade Ship 1" type="StaticBody2D" parent="."]
+position = Vector2(-200, 250)
+script = ExtResource("2_hxsra")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Upgrade Ship 1"]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_sse2w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Upgrade Ship 1"]
+scale = Vector2(0.35, 0.35)
+sprite_frames = SubResource("SpriteFrames_dkppu")
+animation = &"Idle"
+
+[node name="Upgrade Description" type="Label" parent="Upgrade Ship 1"]
+custom_minimum_size = Vector2(120, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -55.0
+offset_right = 60.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Helath gives the player more lives"
+label_settings = ExtResource("4_7u2a0")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Upgrade Title" type="Label" parent="Upgrade Ship 1"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -100.0
+offset_right = 39.0
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Helath"
+label_settings = ExtResource("3_arpcj")
+horizontal_alignment = 1
+
+[node name="Upgrade Ship 2" type="StaticBody2D" parent="."]
+position = Vector2(200, 250)
+script = ExtResource("2_hxsra")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Upgrade Ship 2"]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_sse2w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Upgrade Ship 2"]
+scale = Vector2(0.35, 0.35)
+sprite_frames = SubResource("SpriteFrames_dkppu")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.841668
+
+[node name="Upgrade Title" type="Label" parent="Upgrade Ship 2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -100.0
+offset_right = 39.0
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Helath"
+label_settings = ExtResource("3_arpcj")
+horizontal_alignment = 1
+
+[node name="Upgrade Description" type="Label" parent="Upgrade Ship 2"]
+custom_minimum_size = Vector2(120, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -55.0
+offset_right = 60.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Helath gives the player more lives"
+label_settings = ExtResource("4_7u2a0")
+horizontal_alignment = 1
+autowrap_mode = 2
