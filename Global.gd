@@ -4,17 +4,23 @@ var bulletInstanceCount = 0
 var enemyBulletInstanceCount = 0
 var maxBullets = 3
 var bulletSpeed = 500
+var playerSpeed = 300
 var save_file = "user://save.txt"
-var fireflyShot : bool = false
 var playerHealth = 5
 var enemySpeed = -10
 var Level = 1
+
 
 #Global Node References
 var enemyReference
 var mainGame
 var UpgradesUI
 var player 
+
+#Upgrades Variables
+var tripleShot = false
+var upgradeMenu = false
+var fireflyShot : bool = false
 
 
 

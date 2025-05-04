@@ -21,6 +21,7 @@ func startUpgrades():
 	collision2.disabled = true
 	upgradeShip1.rollUpgrade()
 	upgradeShip2.rollUpgrade()
+	GlobalVariables.upgradeMenu = true
 	animationPlayer.play("Upgrade Fly in", -1, 1)
 	await animationPlayer.animation_finished
 	animationPlayer.play("Upgrade Idle", -1, 1)
@@ -30,6 +31,7 @@ func startUpgrades():
 func endUpgrades():
 	collision1.disabled = true
 	collision2.disabled = true
+	GlobalVariables.upgradeMenu = false
 	animationPlayer.play("Upgrade Fly Out", -1, 1)
 	await animationPlayer.animation_finished
 	GlobalVariables.mainGame.upgradeFinishedRound()

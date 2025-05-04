@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+var rng = RandomNumberGenerator.new()
 var hasShield = false
 var can_shoot = false
 var shield = preload("res://Enemy/Shield.tscn")
@@ -11,9 +12,7 @@ var enemyList = ["res://Images/Enemy 1.png",
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Area2D.connect("area_entered", Callable(self, "_colliding"))
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	$Timer.wait_time = rng.randf_range(2.0, 8.0)
+	$Timer.wait_time = rng.randf_range(4.0, 10.0)
 	$Timer.start()
 	var chosenEnemy = enemyList[rng.randi_range(0, 2)]
 	%Sprite2D.texture = load(chosenEnemy)

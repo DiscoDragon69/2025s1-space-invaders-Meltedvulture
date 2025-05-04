@@ -38,6 +38,6 @@ func ufoLoop():
 	timer.start(1)
 	await timer.timeout
 	if moving == false:
-		if rng.randi_range(1, 30) == 15:
+		if rng.randi_range(1, 50) == 25 and GlobalVariables.upgradeMenu == false:
 			Spawn()
 	ufoLoop()

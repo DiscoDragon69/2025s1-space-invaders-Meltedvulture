@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var movement_speed = 300
+var movement_speed = GlobalVariables.playerSpeed
 var bullet_source = preload ("res://Bullet/Bullet.tscn")
 var bomb_source = preload ("res://Bullet/Bomb.tscn")
 var bombCount = 3
@@ -18,6 +18,7 @@ func _ready():
 	GlobalVariables.fireflyShot = false
 	
 func _physics_process(delta):
+	movement_speed = GlobalVariables.playerSpeed
 	if Input.is_action_pressed("ui_left") and position.x > 40:	
 		move_and_collide(Vector2(-movement_speed * delta, 0))
 	if Input.is_action_pressed("ui_right") and position.x < 1240 :	
@@ -25,10 +26,17 @@ func _physics_process(delta):
 
 func _process(delta):
 	if Input.is_action_just_pressed("fire"):
-		if GlobalVariables.bulletInstanceCount < GlobalVariables.maxBullets + 0:
-			var bullet_instance = bullet_source.instantiate()
-			bullet_instance.position = Vector2(position.x, position.y-35)
-			get_tree().get_root().add_child(bullet_instance)
+		if GlobalVariables.bulletInstanceCount < GlobalVariables.maxBullets:
+			if GlobalVariables.tripleShot == true:
+				tripleShot(0)
+				if GlobalVariables.bulletInstanceCount < GlobalVariables.maxBullets:
+					tripleShot(-1)
+				if GlobalVariables.bulletInstanceCount < GlobalVariables.maxBullets:
+					tripleShot(1)
+			else:
+				var bullet_instance = bullet_source.instantiate()
+				bullet_instance.position = Vector2(position.x, position.y-35)
+				get_tree().get_root().add_child(bullet_instance)
 		
 
 
@@ -68,3 +76,15 @@ func Powerup(powerup):
 	if powerup == 3:
 		labelOBJ.powerUpLabel("Extra Points")
 		GlobalVariables.scoringInformation["currentScore"] += 100
+
+func tripleShot(Direction):
+	#Direction can only be -1, 0, 1 to indicate which bullet it is
+	var bullet_instance = bullet_source.instantiate()
+	bullet_instance.position = Vector2(position.x + (15 * Direction) , position.y-35)
+	bullet_instance.tripleShotMovement(Direction)
+	get_tree().get_root().add_child(bullet_instance)
+	
+	
+	
+	
+	

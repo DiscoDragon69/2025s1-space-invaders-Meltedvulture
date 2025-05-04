@@ -20,4 +20,4 @@ func _physics_process(delta):
 	if (collidedobject):
 		if "Enemy" in collidedobject.get_collider().name:
 			collidedobject.get_collider().queue_free()
-			queue_free()
+		queue_free()

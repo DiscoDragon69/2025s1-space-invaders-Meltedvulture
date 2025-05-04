@@ -11,12 +11,15 @@ func _ready():
 	set_physics_process(true)
 
 
+func tripleShotMovement(Direction):
+	speedX = Direction
+
 func _physics_process(delta):
 	var collidedobject
 	if GlobalVariables.fireflyShot == true:
 		collidedobject = move_and_collide(Vector2(rng.randf_range(-24, 24), -speed*delta))
 	else:
-		collidedobject = move_and_collide(Vector2(0, -speed*delta))
+		collidedobject = move_and_collide(Vector2(speedX, -speed*delta))
 
 	if (collidedobject):
 		if "Enemy" in collidedobject.get_collider().name:
