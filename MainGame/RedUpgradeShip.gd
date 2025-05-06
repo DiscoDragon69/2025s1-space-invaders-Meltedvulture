@@ -17,10 +17,10 @@ var upgradeText = [
 	]
 
 var costText = [
-	["-200 score", 200],
-	["-300 score", 300],
-	["-500 score", 500],
-	["-1000 score", 1000],
+	#["-200 score", 200],
+	#["-300 score", 300],
+	#["-500 score", 500],
+	#["-1000 score", 1000],
 	["-x Bullets", null],
 	["-x Speed", null],
 	["-x Health", null],
@@ -31,7 +31,6 @@ var costText = [
 
 func _ready():
 	visible = false
-	
 
 func rollUpgrade():
 	#if rng.randi_range(0, 25) == 15:
@@ -61,7 +60,7 @@ func activateUpgrade():
 		GlobalVariables.maxBullets -= value
 
 	if cost == "-x Speed":
-		GlobalVariables.playerSpeed -= value
+		GlobalVariables.playerSpeed -= value * 100
 
 	if cost == "-x Health":
 		GlobalVariables.player.change_health(int(-value))
@@ -76,11 +75,11 @@ func costTextCalculate():
 		value = rng.randi_range(1, 3)
 		costTextToAdd = "-x Bullets".replace("x", str(value))
 
-	if cost == "-x Speed":
+	elif cost == "-x Speed":
 		value = rng.randi_range(1, 3)
-		costTextToAdd = "-x Speed".replace("x", str(value))
+		costTextToAdd = "-x Speed".replace("x", str(value * 100))
 
-	if cost == "-x Health":
+	elif cost == "-x Health":
 		value = rng.randi_range(1, 3)
 		costTextToAdd = "-x Health".replace("x", str(value))
 		

@@ -8,7 +8,7 @@ func _ready():
 
 
 func gridMove():
-	speed = GlobalVariables.enemySpeed
+	speed = GlobalVariables.enemySpeed + GlobalVariables.Level
 	global_position.x += speed
 
 

@@ -2,7 +2,7 @@ extends Node
 
 var bulletInstanceCount = 0
 var enemyBulletInstanceCount = 0
-var maxBullets = 30000
+var maxBullets = 3
 var bulletSpeed = 500
 var playerSpeed = 300
 var save_file = "user://save.txt"
@@ -21,7 +21,8 @@ var player
 var tripleShot = false
 var upgradeMenu = false
 var rapidFire = true
-var fireflyShot : bool = false
+var fireflyShot = false
+var dash = true
 
 
 

@@ -38,8 +38,12 @@ func _process(delta):
 			var bomb_instance = bomb_source.instantiate()
 			bomb_instance.position = Vector2(position.x, position.y-35)
 			get_tree().get_root().add_child(bomb_instance)
-			
-			
+		
+	if Input.is_action_just_pressed("dash") and GlobalVariables.dash == true:
+		GlobalVariables.playerSpeed *= 2
+		timer.start(0.25)
+		await timer.timeout
+		GlobalVariables.playerSpeed /= 300
 
 func shoot():
 	if GlobalVariables.bulletInstanceCount < GlobalVariables.maxBullets:
