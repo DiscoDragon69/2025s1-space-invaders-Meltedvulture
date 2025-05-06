@@ -24,7 +24,7 @@ func _physics_process(delta):
 	if (collidedobject):
 		if "Enemy" in collidedobject.get_collider().name:
 			collidedobject.get_collider().queue_free()
-			GlobalVariables.scoringInformation["currentScore"] +=10
+			GlobalVariables.scoringInformation["currentScore"] += 10
 			GlobalVariables.mainGame.newRound()
 			# MY Enemy count code cause yeah
 			#GlobalVariables.enemyCount -= 1

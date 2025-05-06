@@ -269,3 +269,7 @@ one_shot = true
 [node name="UpgradesUi" parent="." node_paths=PackedStringArray("animationPlayer") instance=ExtResource("14_n27qm")]
 position = Vector2(640, 795)
 animationPlayer = NodePath("../AnimationPlayer")
+
+[node name="Rapid Fire Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true

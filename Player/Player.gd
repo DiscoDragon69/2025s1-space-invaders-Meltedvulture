@@ -6,6 +6,7 @@ var bomb_source = preload ("res://Bullet/Bomb.tscn")
 var bombCount = 3
 var rng = RandomNumberGenerator.new()
 @onready var timer = %"Global Timer"
+@onready var rapidFireTimer = %"Rapid Fire Timer"
 @export var health: int = 100
 @export var labelOBJ : Node2D
 
@@ -26,20 +27,11 @@ func _physics_process(delta):
 
 func _process(delta):
 	if Input.is_action_just_pressed("fire"):
-		if GlobalVariables.bulletInstanceCount < GlobalVariables.maxBullets:
-			if GlobalVariables.tripleShot == true:
-				tripleShot(0)
-				if GlobalVariables.bulletInstanceCount < GlobalVariables.maxBullets:
-					tripleShot(-1)
-				if GlobalVariables.bulletInstanceCount < GlobalVariables.maxBullets:
-					tripleShot(1)
-			else:
-				var bullet_instance = bullet_source.instantiate()
-				bullet_instance.position = Vector2(position.x, position.y-35)
-				get_tree().get_root().add_child(bullet_instance)
+		if GlobalVariables.rapidFire == true:
+			rapidFire()
+		else:
+			shoot()
 		
-
-
 	if Input.is_action_just_pressed("bomb"):
 		if bombCount >= 1:
 			bombCount -= 1
@@ -48,6 +40,20 @@ func _process(delta):
 			get_tree().get_root().add_child(bomb_instance)
 			
 			
+
+func shoot():
+	if GlobalVariables.bulletInstanceCount < GlobalVariables.maxBullets:
+		if GlobalVariables.tripleShot == true:
+			tripleShot(0)
+			if GlobalVariables.bulletInstanceCount < GlobalVariables.maxBullets:
+				tripleShot(-1)
+			if GlobalVariables.bulletInstanceCount < GlobalVariables.maxBullets:
+				tripleShot(1)
+		else:
+			var bullet_instance = bullet_source.instantiate()
+			bullet_instance.position = Vector2(position.x, position.y-35)
+			get_tree().get_root().add_child(bullet_instance)
+
 
 
 func change_health(health_modifier):
@@ -84,7 +90,9 @@ func tripleShot(Direction):
 	bullet_instance.tripleShotMovement(Direction)
 	get_tree().get_root().add_child(bullet_instance)
 	
-	
-	
-	
-	
+func rapidFire():
+	shoot()
+	rapidFireTimer.start(0.1)
+	await rapidFireTimer.timeout
+	if Input.is_action_pressed("fire"):
+		rapidFire()
