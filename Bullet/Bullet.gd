@@ -9,6 +9,10 @@ var speedX = 0
 func _ready():
 	GlobalVariables.bulletInstanceCount += 1
 	set_physics_process(true)
+	GlobalVariables.sceneChange.connect(sceneUpdate)
+
+func sceneUpdate():
+	self.queue_free()
 
 
 func tripleShotMovement(Direction):

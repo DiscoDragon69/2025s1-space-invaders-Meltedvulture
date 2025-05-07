@@ -7,6 +7,7 @@ var bombCount = 3
 var rng = RandomNumberGenerator.new()
 @onready var timer = %"Global Timer"
 @onready var rapidFireTimer = %"Rapid Fire Timer"
+@export var animationPlayer : AnimationPlayer
 @export var health: int = 100
 @export var labelOBJ : Node2D
 
@@ -62,11 +63,31 @@ func shoot():
 
 func change_health(health_modifier):
 	health = health + health_modifier
+	if health_modifier < 0:
+		for n in 6:
+			modulate = Color(255, 0, 0, 255)
+			timer.start(0.05)
+			await timer.timeout
+			modulate = Color(255, 255, 255, 255)
+			timer.start(0.05)
+			await timer.timeout
+	else:
+		for n in 8:
+			modulate = Color(0, 255, 0, 255)
+			timer.start(0.05)
+			await timer.timeout
+			modulate = Color(255, 255, 255, 255)
+			timer.start(0.05)
+			await timer.timeout
+
 	GlobalVariables.playerHealth = health
 	if health > 10:
 		health = 10
 		
-	elif health < 0:
+	elif health <= 0:
+		animationPlayer.play("Player Death", -1, 1)
+		await animationPlayer.animation_finished
+		GlobalVariables.changeScenes()
 		get_tree().change_scene_to_file("res://Lose-Scene.tscn")
 
 

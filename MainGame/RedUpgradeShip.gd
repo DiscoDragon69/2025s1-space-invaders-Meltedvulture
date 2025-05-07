@@ -13,7 +13,8 @@ var upgradeText = [
 	["New Ship", "Heals 3 health"],
 	["+3 Bullets", "Allows +3 bullets on screen"],
 	["Rapid Fire", "Rapid Fire shots"],
-	["6 Bombs", "6 Bomb shots"]
+	["6 Bombs", "6 Bomb shots"],
+	["triple Shot", "Shoot 3 bullets"],
 	]
 
 var costText = [
@@ -54,7 +55,8 @@ func activateUpgrade():
 		GlobalVariables.rapidFire = true
 	if upgrade == 3:
 		GlobalVariables.player.bombCount += 6
-
+	if upgrade == 4:
+		GlobalVariables.tripleShot = true
 	
 	if cost == "-x Bullets":
 		GlobalVariables.maxBullets -= value

@@ -1,5 +1,7 @@
 extends Node
 
+signal sceneChange
+
 var bulletInstanceCount = 0
 var enemyBulletInstanceCount = 0
 var maxBullets = 3
@@ -36,7 +38,8 @@ var scoringInformation = {
 }
 
 
-
+func changeScenes():
+	emit_signal("sceneChange")
 
 #UFO will fly across the screen
 #If UFO shot it will choose a random number from 0 to list length of power ups

@@ -5,12 +5,16 @@ var speed
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GlobalVariables.enemyReference = self
+	GlobalVariables.sceneChange.connect(sceneUpdate)
 
 
 func gridMove():
-	speed = GlobalVariables.enemySpeed + GlobalVariables.Level
+	speed = GlobalVariables.enemySpeed + GlobalVariables.Level * 2
 	global_position.x += speed
 
 
 func _on_timer_timeout():
 	gridMove()
+
+func sceneUpdate():
+	self.queue_free()

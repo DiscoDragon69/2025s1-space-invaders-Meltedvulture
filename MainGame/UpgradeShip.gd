@@ -10,8 +10,6 @@ var upgradeText = [
 	["+1 Bullets", "Allows +1 bullets on screen"],
 	["Faster Bullets", "Your bullets will move faster"],
 	["Faster Thrusters", "Increase your ships speed"],
-	["triple Shot", "Shoot 3 bullets"],
-	
 	]
 
 
@@ -31,8 +29,6 @@ func activateUpgrade():
 		GlobalVariables.bulletSpeed += 100
 	if upgrade == 3:
 		GlobalVariables.playerSpeed += 100
-	if upgrade == 4:
-		GlobalVariables.tripleShot = true
 
 #upgrades
 
