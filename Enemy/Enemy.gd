@@ -35,10 +35,11 @@ func _ready():
 func _colliding(area):
 	if area.is_in_group("right"):
 		get_parent().global_position.y += 10
-		GlobalVariables.enemySpeed = -10
+		GlobalVariables.enemySpeed = -10 
 	if area.is_in_group("left"):
 		get_parent().global_position.y += 10
 		GlobalVariables.enemySpeed = 10
+		
 	if area.is_in_group("Player"):
 		get_tree().change_scene_to_file("res://Lose-Scene.tscn")
 

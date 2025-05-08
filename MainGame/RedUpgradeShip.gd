@@ -15,13 +15,14 @@ var upgradeText = [
 	["Rapid Fire", "Rapid Fire shots"],
 	["6 Bombs", "6 Bomb shots"],
 	["triple Shot", "Shoot 3 bullets"],
+	["Dash Upgrade", "Allows for Dashing Sideways"]
 	]
 
 var costText = [
-	#["-200 score", 200],
-	#["-300 score", 300],
-	#["-500 score", 500],
-	#["-1000 score", 1000],
+	["-200 score", 200],
+	["-300 score", 300],
+	["-500 score", 500],
+	["-1000 score", 1000],
 	["-x Bullets", null],
 	["-x Speed", null],
 	["-x Health", null],
@@ -46,7 +47,6 @@ func rollUpgrade():
 
 
 func activateUpgrade():
-	get_parent().endUpgrades()
 	if upgrade == 0:
 		GlobalVariables.player.change_health(3)
 	if upgrade == 1:
@@ -57,18 +57,24 @@ func activateUpgrade():
 		GlobalVariables.player.bombCount += 6
 	if upgrade == 4:
 		GlobalVariables.tripleShot = true
+	if upgrade == 5:
+		GlobalVariables.dash = true
 	
-	if cost == "-x Bullets":
+	if cost == "-x Bullets" and GlobalVariables.maxBullets > value:
 		GlobalVariables.maxBullets -= value
+		get_parent().endUpgrades()
 
-	if cost == "-x Speed":
+	if cost == "-x Speed" and GlobalVariables.playerSpeed > (value * 100):
 		GlobalVariables.playerSpeed -= value * 100
+		get_parent().endUpgrades()
 
-	if cost == "-x Health":
+	if cost == "-x Health" and GlobalVariables.playerHealth > value:
 		GlobalVariables.player.change_health(int(-value))
-	
-	if costText[costIndex][1] is int:
+		get_parent().endUpgrades()
+	 
+	if costText[costIndex][1] is int and GlobalVariables.scoringInformation["currentScore"] >= costText[costIndex][1]:
 		GlobalVariables.scoringInformation["currentScore"] -= costText[costIndex][1]
+		get_parent().endUpgrades()
 
 func costTextCalculate():
 	var costTextToAdd

@@ -21,6 +21,34 @@ size = Vector2(41.9244, 761.152)
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(1324.12, 69)
 
+[sub_resource type="Animation" id="Animation_oolb2"]
+resource_name = "Player Death"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:rotation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.785398, 1.5708, 2.35619, 3.14159, 3.92699, 4.71239, 5.49779, 0.0, 0.785398, 1.5708, 2.35619, 3.14159, 3.92699, 4.71239, 5.49779, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2, 2.2, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(640, 680), Vector2(639.999, 636), Vector2(639.999, 929)]
+}
+
 [sub_resource type="Animation" id="Animation_qvna1"]
 length = 0.001
 tracks/0/type = "value"
@@ -124,34 +152,6 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_oolb2"]
-resource_name = "Player Death"
-length = 3.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Player:rotation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.785398, 1.5708, 2.35619, 3.14159, 3.92699, 4.71239, 5.49779, 0.0, 0.785398, 1.5708, 2.35619, 3.14159, 3.92699, 4.71239, 5.49779, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Player:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(2, 2.2, 2.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(640, 680), Vector2(639.999, 636), Vector2(639.999, 929)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k4nrb"]
 _data = {
 "Player Death": SubResource("Animation_oolb2"),
@@ -191,14 +191,16 @@ text = "0"
 label_settings = ExtResource("3_kr5bp")
 
 [node name="Border_Left" type="Area2D" parent="." groups=["left"]]
-position = Vector2(-1.53629, 369.479)
+position = Vector2(-54.001, 359)
+scale = Vector2(4, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Border_Left" groups=["left"]]
 position = Vector2(-5.37704, -0.768158)
 shape = SubResource("1")
 
 [node name="Border_Right" type="Area2D" parent="." groups=["right"]]
-position = Vector2(1287.42, 368.711)
+position = Vector2(1367, 369)
+scale = Vector2(3.6, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Border_Right" groups=["right"]]
 position = Vector2(-5.37704, -0.768158)

@@ -5,6 +5,7 @@ var bullet_source = preload ("res://Bullet/Bullet.tscn")
 var bomb_source = preload ("res://Bullet/Bomb.tscn")
 var bombCount = 3
 var rng = RandomNumberGenerator.new()
+var canDash = true
 @onready var timer = %"Global Timer"
 @onready var rapidFireTimer = %"Rapid Fire Timer"
 @export var animationPlayer : AnimationPlayer
@@ -40,11 +41,13 @@ func _process(delta):
 			bomb_instance.position = Vector2(position.x, position.y-35)
 			get_tree().get_root().add_child(bomb_instance)
 		
-	if Input.is_action_just_pressed("dash") and GlobalVariables.dash == true:
-		GlobalVariables.playerSpeed *= 2
+	if Input.is_action_just_pressed("dash") and GlobalVariables.dash == true and canDash == true:
+		canDash = false
+		GlobalVariables.playerSpeed *= 3
 		timer.start(0.25)
 		await timer.timeout
-		GlobalVariables.playerSpeed /= 300
+		GlobalVariables.playerSpeed /= 3
+		dashCooldown()
 
 func shoot():
 	if GlobalVariables.bulletInstanceCount < GlobalVariables.maxBullets:
@@ -63,6 +66,7 @@ func shoot():
 
 func change_health(health_modifier):
 	health = health + health_modifier
+	GlobalVariables.playerHealth = health
 	if health_modifier < 0:
 		for n in 6:
 			modulate = Color(255, 0, 0, 255)
@@ -80,7 +84,6 @@ func change_health(health_modifier):
 			timer.start(0.05)
 			await timer.timeout
 
-	GlobalVariables.playerHealth = health
 	if health > 10:
 		health = 10
 		
@@ -117,7 +120,19 @@ func tripleShot(Direction):
 	
 func rapidFire():
 	shoot()
-	rapidFireTimer.start(0.1)
+	rapidFireTimer.start(GlobalVariables.rapidFireCooldown)
 	await rapidFireTimer.timeout
 	if Input.is_action_pressed("fire"):
 		rapidFire()
+
+func dashCooldown():
+	timer.start(GlobalVariables.dashCooldown)
+	await timer.timeout
+	canDash = true
+	for n in 4:
+			modulate = Color(255, 255, 0, 255)
+			timer.start(0.05)
+			await timer.timeout
+			modulate = Color(255, 255, 255, 255)
+			timer.start(0.05)
+			await timer.timeout

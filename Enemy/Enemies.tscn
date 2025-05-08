@@ -104,7 +104,5 @@ position = Vector2(-579.789, 404.497)
 position = Vector2(-472.219, 404.428)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.25
-autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
