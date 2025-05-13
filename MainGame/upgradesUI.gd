@@ -19,10 +19,6 @@ func _ready() -> void:
 	GlobalVariables.UpgradesUI = self
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 
 func startUpgrades():
 	upgradeShip[0][1].disabled = true

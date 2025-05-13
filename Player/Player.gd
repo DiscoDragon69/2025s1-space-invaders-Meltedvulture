@@ -14,6 +14,7 @@ var canDash = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	rng.randomize()
 	set_process(true)
 	set_physics_process(true)
 	health = GlobalVariables.playerHealth

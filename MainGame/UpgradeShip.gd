@@ -2,7 +2,7 @@ extends StaticBody2D
 
 @onready var title = $"Upgrade Title"
 @onready var description = $"Upgrade Description"
-var upgrade = 2
+var upgrade = 0
 var dashAdded = false
 var FireSpeedAdded = false
 

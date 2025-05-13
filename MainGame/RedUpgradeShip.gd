@@ -32,11 +32,12 @@ var costText = [
 
 
 func _ready():
+	rng.randomize()
 	visible = false
 
 func rollUpgrade():
-	#if rng.randi_range(0, 25) == 15:
-	if true:
+	if rng.randi_range(0, 15) == 5:
+	#if true:
 		visible = true
 		costIndex = rng.randi_range(0, (costText.size() - 1))
 		upgrade = rng.randi_range(0, (upgradeText.size() - 1))
@@ -46,35 +47,49 @@ func rollUpgrade():
 		description.text = upgradeText[upgrade][1]
 
 
-func activateUpgrade():
-	if upgrade == 0:
-		GlobalVariables.player.change_health(3)
-	if upgrade == 1:
-		GlobalVariables.maxBullets += 3
-	if upgrade == 2:
-		GlobalVariables.rapidFire = true
-	if upgrade == 3:
-		GlobalVariables.player.bombCount += 6
-	if upgrade == 4:
-		GlobalVariables.tripleShot = true
-	if upgrade == 5:
-		GlobalVariables.dash = true
-	
+func costCheck():
 	if cost == "-x Bullets" and GlobalVariables.maxBullets > value:
 		GlobalVariables.maxBullets -= value
 		get_parent().endUpgrades()
+		return true
+		
 
 	if cost == "-x Speed" and GlobalVariables.playerSpeed > (value * 100):
 		GlobalVariables.playerSpeed -= value * 100
 		get_parent().endUpgrades()
+		return true
+		
 
 	if cost == "-x Health" and GlobalVariables.playerHealth > value:
 		GlobalVariables.player.change_health(int(-value))
 		get_parent().endUpgrades()
+		return true
+		
 	 
 	if costText[costIndex][1] is int and GlobalVariables.scoringInformation["currentScore"] >= costText[costIndex][1]:
 		GlobalVariables.scoringInformation["currentScore"] -= costText[costIndex][1]
 		get_parent().endUpgrades()
+		return true
+		
+
+
+
+func activateUpgrade():
+	if costCheck():
+		if upgrade == 0:
+			GlobalVariables.player.change_health(3)
+		if upgrade == 1:
+			GlobalVariables.maxBullets += 3
+		if upgrade == 2:
+			GlobalVariables.rapidFire = true
+		if upgrade == 3:
+			GlobalVariables.player.bombCount += 6
+		if upgrade == 4:
+			GlobalVariables.tripleShot = true
+		if upgrade == 5:
+			GlobalVariables.dash = true
+	
+
 
 func costTextCalculate():
 	var costTextToAdd
@@ -94,7 +109,7 @@ func costTextCalculate():
 	else:
 		costTextToAdd = costText[costIndex][0]
 
-	costLabel.text = costTextToAdd
+	costLabel.text = "Cost: " + costTextToAdd
 #upgrades
 
 #+1 health

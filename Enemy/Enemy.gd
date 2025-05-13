@@ -12,7 +12,8 @@ var enemyList = ["res://Images/Enemy 1.png",
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Area2D.connect("area_entered", Callable(self, "_colliding"))
-	$Timer.wait_time = rng.randf_range(4.0, 10.0)
+	$Timer.wait_time = rng.randf_range(5.0, 10.0)
+	#$Timer.wait_time = 0.5
 	$Timer.start()
 	var chosenEnemy = enemyList[rng.randi_range(0, 2)]
 	%Sprite2D.texture = load(chosenEnemy)
@@ -26,11 +27,16 @@ func _ready():
 		scale = Vector2(0.75, 0.75)
 
 	if hasShield == false:
-		if rng.randi_range(1, 6) == 3:
-			var shieldInstance = shield.instantiate()
-			add_child(shieldInstance)
-			hasShield = true
-	
+		if GlobalVariables.hardMode == true:
+			if rng.randi_range(1, 2) == 2:
+				var shieldInstance = shield.instantiate()
+				add_child(shieldInstance)
+				hasShield = true
+		else:
+			if rng.randi_range(1, 8) == 4:
+				var shieldInstance = shield.instantiate()
+				add_child(shieldInstance)
+				hasShield = true
 
 func _colliding(area):
 	if area.is_in_group("right"):

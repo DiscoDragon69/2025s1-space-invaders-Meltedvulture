@@ -4,16 +4,17 @@ signal sceneChange
 
 var bulletInstanceCount = 0
 var enemyBulletInstanceCount = 0
-var maxBullets = 300
+var maxBullets = 3
 var bulletSpeed = 500
 var playerSpeed = 300
 var save_file = "user://save.txt"
 var playerHealth = 5
 var enemySpeed = -10
-var Level = 10
+var Level = 1
 var dashCooldown = 5
-var rapidFireCooldown = 0.25
-
+var rapidFireCooldown = 0.1 #0.25 Default
+var powerUpMode = true
+var hardMode = false
 
 #Global Node References
 var enemyReference
@@ -24,7 +25,7 @@ var player
 #Upgrades Variables
 var tripleShot = false
 var upgradeMenu = false
-var rapidFire = true
+var rapidFire = false
 var fireflyShot = false
 var dash = false
 

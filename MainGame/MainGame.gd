@@ -11,8 +11,11 @@ var levelsPassed = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	rng.randomize()
 	LevelLabel.text = str("Level: ", GlobalVariables.Level)
 	GlobalVariables.mainGame = self
+	if GlobalVariables.hardMode == true:
+		GlobalVariables.player.change_health(-2)
 	rollSceneModifiers(rng.randi_range(1, 1))
 	
 func _process(delta):
@@ -30,8 +33,7 @@ func newRound():
 		GlobalVariables.enemyReference.queue_free()
 		animationPlayer.play("Win Label Flash", -1, 1)
 		await animationPlayer.animation_finished
-		#if rng.randi_range(levelsPassed, 5) == 5:
-		if true:
+		if rng.randi_range(levelsPassed, 3) == 2 and GlobalVariables.powerUpMode == true:
 			levelsPassed = 0
 			GlobalVariables.UpgradesUI.startUpgrades()
 		else:

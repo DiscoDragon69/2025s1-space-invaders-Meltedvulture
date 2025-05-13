@@ -9,6 +9,7 @@ var Yvel = rng.randf_range(-24.0, 24.0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	rng.randomize()
 	set_physics_process(true)
 
 
