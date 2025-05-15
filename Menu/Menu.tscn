@@ -3,14 +3,14 @@
 [ext_resource type="Script" path="res://Menu/menu.gd" id="1_rqhs0"]
 [ext_resource type="FontFile" uid="uid://ciuann1rm6s0g" path="res://Menu/PaletteMosaic-Regular.ttf" id="2"]
 [ext_resource type="FontFile" path="res://Menu/buttonFont.tres" id="3"]
-[ext_resource type="Script" path="res://Menu/start_game_button.gd" id="4_s5cbm"]
-[ext_resource type="Script" path="res://Menu/options.gd" id="5_cnf7y"]
+[ext_resource type="Script" path="res://Menu/Menu Buttons.gd" id="4_s5cbm"]
+[ext_resource type="Script" path="res://Menu/Options Button.gd" id="5_cnf7y"]
 [ext_resource type="Texture2D" uid="uid://cvqs8sdkufloy" path="res://Images/Enemy 1.png" id="6_pqhrw"]
 [ext_resource type="Texture2D" uid="uid://dcrrtxt7tnsc6" path="res://Images/Enemy 2.png" id="7_wvuux"]
 [ext_resource type="Texture2D" uid="uid://ci56n2ls48vox" path="res://Images/Enemy 3.png" id="8_p1hby"]
 [ext_resource type="VideoStream" path="res://Video/Space-Background.ogv" id="9_db8v3"]
 
-[sub_resource type="FontFile" id="1"]
+[sub_resource type="FontFile" id="FontFile_lhk8x"]
 fallbacks = Array[Font]([ExtResource("2")])
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
@@ -129,7 +129,7 @@ cache/0/64/0/underline_position = 0.0
 cache/0/64/0/underline_thickness = 0.0
 cache/0/64/0/scale = 1.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_ph00l"]
+[sub_resource type="LabelSettings" id="LabelSettings_suefg"]
 font_size = 64
 
 [node name="Menu" type="Control"]
@@ -185,28 +185,10 @@ theme_override_fonts/font = ExtResource("3")
 text = "Quit"
 script = ExtResource("4_s5cbm")
 
-[node name="Title" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -395.0
-offset_top = -309.0
-offset_right = 885.0
-offset_bottom = -215.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="Label" type="Label" parent="Title"]
+[node name="Credits" type="Button" parent="Buttons"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = SubResource("1")
-text = "Space Invaders Godot"
-label_settings = SubResource("LabelSettings_ph00l")
+size_flags_horizontal = 4
+text = "Credits and Helpers!"
 
 [node name="Credits" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -283,6 +265,22 @@ autoplay = true
 expand = true
 loop = true
 
+[node name="Game Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -414.0
+offset_top = 74.0
+offset_right = 414.0
+offset_bottom = 168.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = SubResource("FontFile_lhk8x")
+text = "Space Invaders Godot"
+label_settings = SubResource("LabelSettings_suefg")
+
 [connection signal="pressed" from="Buttons/Start Game Button" to="Buttons/Start Game Button" method="_on_start_button_pressed"]
 [connection signal="pressed" from="Buttons/Options" to="Buttons/Options" method="_on_options_pressed"]
 [connection signal="pressed" from="Buttons/Quit" to="Buttons/Quit" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Buttons/Credits" to="Buttons/Start Game Button" method="_on_credits_pressed"]

@@ -24,4 +24,4 @@ func gridMove():
 	gridMove()
 
 func sceneUpdate():
-	self.queue_free()
+	queue_free()

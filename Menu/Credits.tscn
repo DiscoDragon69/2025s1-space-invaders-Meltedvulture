@@ -1,0 +1,393 @@
+[gd_scene load_steps=11 format=3 uid="uid://da7ujg8ukugyk"]
+
+[ext_resource type="Script" path="res://Menu/menu.gd" id="1_tgwlo"]
+[ext_resource type="FontFile" uid="uid://ciuann1rm6s0g" path="res://Menu/PaletteMosaic-Regular.ttf" id="5_phb1b"]
+[ext_resource type="Texture2D" uid="uid://cvqs8sdkufloy" path="res://Images/Enemy 1.png" id="6_tah6y"]
+[ext_resource type="LabelSettings" uid="uid://dt1fyosd1flvg" path="res://assets/Credit Label Settings.tres" id="7_4uqsa"]
+[ext_resource type="Texture2D" uid="uid://dcrrtxt7tnsc6" path="res://Images/Enemy 2.png" id="7_fe70j"]
+[ext_resource type="Texture2D" uid="uid://ci56n2ls48vox" path="res://Images/Enemy 3.png" id="8_38uhn"]
+[ext_resource type="Script" path="res://ReturnMenuButton.gd" id="8_gq266"]
+[ext_resource type="VideoStream" path="res://Video/Space-Background.ogv" id="9_syqwf"]
+
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("5_phb1b")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/46/0/ascent = 0.0
+cache/0/46/0/descent = 0.0
+cache/0/46/0/underline_position = 0.0
+cache/0/46/0/underline_thickness = 0.0
+cache/0/46/0/scale = 1.0
+cache/0/71/0/ascent = 0.0
+cache/0/71/0/descent = 0.0
+cache/0/71/0/underline_position = 0.0
+cache/0/71/0/underline_thickness = 0.0
+cache/0/71/0/scale = 1.0
+cache/0/91/0/ascent = 0.0
+cache/0/91/0/descent = 0.0
+cache/0/91/0/underline_position = 0.0
+cache/0/91/0/underline_thickness = 0.0
+cache/0/91/0/scale = 1.0
+cache/0/106/0/ascent = 0.0
+cache/0/106/0/descent = 0.0
+cache/0/106/0/underline_position = 0.0
+cache/0/106/0/underline_thickness = 0.0
+cache/0/106/0/scale = 1.0
+cache/0/121/0/ascent = 0.0
+cache/0/121/0/descent = 0.0
+cache/0/121/0/underline_position = 0.0
+cache/0/121/0/underline_thickness = 0.0
+cache/0/121/0/scale = 1.0
+cache/0/131/0/ascent = 0.0
+cache/0/131/0/descent = 0.0
+cache/0/131/0/underline_position = 0.0
+cache/0/131/0/underline_thickness = 0.0
+cache/0/131/0/scale = 1.0
+cache/0/136/0/ascent = 0.0
+cache/0/136/0/descent = 0.0
+cache/0/136/0/underline_position = 0.0
+cache/0/136/0/underline_thickness = 0.0
+cache/0/136/0/scale = 1.0
+cache/0/141/0/ascent = 0.0
+cache/0/141/0/descent = 0.0
+cache/0/141/0/underline_position = 0.0
+cache/0/141/0/underline_thickness = 0.0
+cache/0/141/0/scale = 1.0
+cache/0/151/0/ascent = 0.0
+cache/0/151/0/descent = 0.0
+cache/0/151/0/underline_position = 0.0
+cache/0/151/0/underline_thickness = 0.0
+cache/0/151/0/scale = 1.0
+cache/0/161/0/ascent = 0.0
+cache/0/161/0/descent = 0.0
+cache/0/161/0/underline_position = 0.0
+cache/0/161/0/underline_thickness = 0.0
+cache/0/161/0/scale = 1.0
+cache/0/171/0/ascent = 0.0
+cache/0/171/0/descent = 0.0
+cache/0/171/0/underline_position = 0.0
+cache/0/171/0/underline_thickness = 0.0
+cache/0/171/0/scale = 1.0
+cache/0/176/0/ascent = 0.0
+cache/0/176/0/descent = 0.0
+cache/0/176/0/underline_position = 0.0
+cache/0/176/0/underline_thickness = 0.0
+cache/0/176/0/scale = 1.0
+cache/0/146/0/ascent = 0.0
+cache/0/146/0/descent = 0.0
+cache/0/146/0/underline_position = 0.0
+cache/0/146/0/underline_thickness = 0.0
+cache/0/146/0/scale = 1.0
+cache/0/126/0/ascent = 0.0
+cache/0/126/0/descent = 0.0
+cache/0/126/0/underline_position = 0.0
+cache/0/126/0/underline_thickness = 0.0
+cache/0/126/0/scale = 1.0
+cache/0/116/0/ascent = 0.0
+cache/0/116/0/descent = 0.0
+cache/0/116/0/underline_position = 0.0
+cache/0/116/0/underline_thickness = 0.0
+cache/0/116/0/scale = 1.0
+cache/0/96/0/ascent = 0.0
+cache/0/96/0/descent = 0.0
+cache/0/96/0/underline_position = 0.0
+cache/0/96/0/underline_thickness = 0.0
+cache/0/96/0/scale = 1.0
+cache/0/86/0/ascent = 0.0
+cache/0/86/0/descent = 0.0
+cache/0/86/0/underline_position = 0.0
+cache/0/86/0/underline_thickness = 0.0
+cache/0/86/0/scale = 1.0
+cache/0/76/0/ascent = 0.0
+cache/0/76/0/descent = 0.0
+cache/0/76/0/underline_position = 0.0
+cache/0/76/0/underline_thickness = 0.0
+cache/0/76/0/scale = 1.0
+cache/0/66/0/ascent = 0.0
+cache/0/66/0/descent = 0.0
+cache/0/66/0/underline_position = 0.0
+cache/0/66/0/underline_thickness = 0.0
+cache/0/66/0/scale = 1.0
+cache/0/61/0/ascent = 0.0
+cache/0/61/0/descent = 0.0
+cache/0/61/0/underline_position = 0.0
+cache/0/61/0/underline_thickness = 0.0
+cache/0/61/0/scale = 1.0
+cache/0/81/0/ascent = 0.0
+cache/0/81/0/descent = 0.0
+cache/0/81/0/underline_position = 0.0
+cache/0/81/0/underline_thickness = 0.0
+cache/0/81/0/scale = 1.0
+cache/0/64/0/ascent = 0.0
+cache/0/64/0/descent = 0.0
+cache/0/64/0/underline_position = 0.0
+cache/0/64/0/underline_thickness = 0.0
+cache/0/64/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ph00l"]
+font_size = 64
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_tgwlo")
+
+[node name="Screenshot" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 373.0
+offset_top = -123.0
+offset_right = 885.0
+offset_bottom = 542.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0840909
+scale = Vector2(0.412591, 0.310196)
+texture = ExtResource("6_tah6y")
+
+[node name="Screenshot2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.0
+offset_top = -28.0
+offset_right = 395.0
+offset_bottom = 637.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0450377
+scale = Vector2(0.4138, 0.311105)
+texture = ExtResource("7_fe70j")
+
+[node name="Screenshot3" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -521.0
+offset_top = -95.0
+offset_right = -9.0
+offset_bottom = 570.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.261799
+scale = Vector2(0.251981, 0.189446)
+texture = ExtResource("8_38uhn")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stream = ExtResource("9_syqwf")
+autoplay = true
+expand = true
+loop = true
+
+[node name="Programmers" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -206.0
+offset_right = 105.0
+offset_bottom = -135.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Lead Programer
+Christopher Lim"
+label_settings = ExtResource("7_4uqsa")
+horizontal_alignment = 1
+
+[node name="Special Thanks" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = 158.0
+offset_right = 167.0
+offset_bottom = 279.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Special Thank You
+to all the beta testers for feedback
+on the LTC open night
+8th May 2025"
+label_settings = ExtResource("7_4uqsa")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Special Thanks"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -87.5
+offset_top = 46.0
+offset_right = 87.5
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.075, 1.075)
+pivot_offset = Vector2(87.5, 16)
+text = "Return to main menu"
+script = ExtResource("8_gq266")
+
+[node name="You Know" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -312.0
+offset_top = -86.9999
+offset_right = 311.0
+offset_bottom = -27.9999
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(311, 29)
+text = "And to the 2 kids who got to level 20
+That was valuabe feedback that the game was WAY to easy lmao"
+label_settings = ExtResource("7_4uqsa")
+horizontal_alignment = 1
+
+[node name="Artist" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -283.0
+offset_top = -81.0
+offset_right = -83.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Lead Artist
+Christopher Lim"
+label_settings = ExtResource("7_4uqsa")
+horizontal_alignment = 1
+
+[node name="Artist2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -283.0
+offset_top = 27.0
+offset_right = -83.0
+offset_bottom = 117.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Sound Design
+Christopher Lim
+Ryan Cather"
+label_settings = ExtResource("7_4uqsa")
+horizontal_alignment = 1
+
+[node name="Artist3" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -81.0
+offset_right = 96.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Lead Designer
+Christopher Lim"
+label_settings = ExtResource("7_4uqsa")
+horizontal_alignment = 1
+
+[node name="Executive Manager" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 74.0
+offset_top = -81.0
+offset_right = 274.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Executive Manager
+Christopher Lim"
+label_settings = ExtResource("7_4uqsa")
+horizontal_alignment = 1
+
+[node name="Other Programers" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 65.0
+offset_top = 27.0
+offset_right = 284.0
+offset_bottom = 172.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Programing Team
+Christopher Lim
+Christopher Lim
+Christopher Lim"
+label_settings = ExtResource("7_4uqsa")
+horizontal_alignment = 1
+
+[node name="Game Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -414.0
+offset_right = 414.0
+offset_bottom = 94.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = SubResource("1")
+text = "Space Invaders Godot"
+label_settings = SubResource("LabelSettings_ph00l")
+
+[connection signal="pressed" from="Special Thanks/Button" to="Special Thanks/Button" method="_on_pressed"]

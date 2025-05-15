@@ -10,6 +10,16 @@ func _ready():
 	GlobalVariables.enemyBulletInstanceCount += 1
 	set_physics_process(true)
 
+func setType(type):
+	if type == "fast":
+		modulate = Color(0, 255, 0)
+		speed += 100
+	elif type == "mega":
+		modulate = Color(255, 0, 0)
+		scale.x += 3
+
+
+
 func _physics_process(delta):
 	var collided_object = move_and_collide(Vector2(0, +speed*delta*0.4))
 	if (collided_object):

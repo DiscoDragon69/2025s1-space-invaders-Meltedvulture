@@ -5,9 +5,17 @@ var hasShield = false
 var can_shoot = false
 var shield = preload("res://Enemy/Shield.tscn")
 var bullet = preload("res://Bullet-Enemy/Bullet-Enemy.tscn")
+var chosenBullet
 var enemyList = ["res://Images/Enemy 1.png",
 				"res://Images/Enemy 2.png",
 				"res://Images/Enemy 3.png"]
+
+var bulletTypes = [
+	"normal",
+	"fast",
+	"mega"
+]
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,6 +25,7 @@ func _ready():
 	$Timer.start()
 	var chosenEnemy = enemyList[rng.randi_range(0, 2)]
 	%Sprite2D.texture = load(chosenEnemy)
+	chosenBullet = bulletTypes[rng.randi_range(0, 2)]
 	
 	if chosenEnemy == enemyList[1]:
 		scale = Vector2(1.25, 1.25)
@@ -55,4 +64,5 @@ func fire_bullet() -> void:
 		if GlobalVariables.enemyBulletInstanceCount < 100:
 			var bulletInstance = bullet.instantiate()
 			bulletInstance.position = Vector2(global_position.x, global_position.y+30)
+			bulletInstance.setType(chosenBullet)
 			get_tree().get_root().add_child(bulletInstance)
