@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var rng = RandomNumberGenerator.new()
+var bulletWeights = PackedFloat32Array([2, 1, 0.5])
 var hasShield = false
 var can_shoot = false
 var shield = preload("res://Enemy/Shield.tscn")
@@ -25,7 +26,7 @@ func _ready():
 	$Timer.start()
 	var chosenEnemy = enemyList[rng.randi_range(0, 2)]
 	%Sprite2D.texture = load(chosenEnemy)
-	chosenBullet = bulletTypes[rng.randi_range(0, 2)]
+	chosenBullet = bulletTypes[rng.rand_weighted(bulletWeights)]
 	
 	if chosenEnemy == enemyList[1]:
 		scale = Vector2(1.25, 1.25)

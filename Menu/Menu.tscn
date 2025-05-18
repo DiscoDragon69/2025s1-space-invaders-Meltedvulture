@@ -145,18 +145,17 @@ script = ExtResource("1_rqhs0")
 
 [node name="Buttons" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -340.0
-offset_top = -365.0
-offset_right = 585.0
-offset_bottom = 35.0
+anchor_bottom = 0.5
+offset_left = -370.0
+offset_top = -17.0
+offset_right = 370.0
+offset_bottom = 239.0
 grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(0.75, 0.75)
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
@@ -166,6 +165,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 24
 text = "Start Game"
 script = ExtResource("4_s5cbm")
 
@@ -174,6 +174,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 24
 text = "Options"
 script = ExtResource("5_cnf7y")
 
@@ -182,23 +183,27 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 24
 text = "Quit"
 script = ExtResource("4_s5cbm")
 
-[node name="Credits" type="Button" parent="Buttons"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Credits and Helpers!"
-
 [node name="Credits" type="HBoxContainer" parent="."]
-layout_mode = 2
-offset_top = 696.0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
 offset_right = 1280.0
-offset_bottom = 719.0
+grow_vertical = 0
 
 [node name="Label" type="Label" parent="Credits"]
 layout_mode = 2
 text = "Copyright Christopher Lim 2025"
+
+[node name="Credits2" type="Button" parent="Credits"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Credits and Helpers!"
 
 [node name="Screenshot" type="TextureRect" parent="."]
 layout_mode = 1
@@ -252,6 +257,7 @@ scale = Vector2(0.251981, 0.189446)
 texture = ExtResource("8_p1hby")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+visible = false
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -280,7 +286,27 @@ theme_override_fonts/font = SubResource("FontFile_lhk8x")
 text = "Space Invaders Godot"
 label_settings = SubResource("LabelSettings_suefg")
 
+[node name="Tutorial Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = 308.0
+offset_right = 128.0
+offset_bottom = 340.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 24
+text = "Tutorial"
+
 [connection signal="pressed" from="Buttons/Start Game Button" to="Buttons/Start Game Button" method="_on_start_button_pressed"]
 [connection signal="pressed" from="Buttons/Options" to="Buttons/Options" method="_on_options_pressed"]
 [connection signal="pressed" from="Buttons/Quit" to="Buttons/Quit" method="_on_quit_button_pressed"]
-[connection signal="pressed" from="Buttons/Credits" to="Buttons/Start Game Button" method="_on_credits_pressed"]
+[connection signal="pressed" from="Credits/Credits2" to="Buttons/Start Game Button" method="_on_credits_pressed"]
+[connection signal="pressed" from="Tutorial Button" to="Buttons/Start Game Button" method="_on_tutorial_button_pressed"]

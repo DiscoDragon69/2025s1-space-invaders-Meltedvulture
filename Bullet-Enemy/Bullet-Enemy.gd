@@ -12,11 +12,14 @@ func _ready():
 
 func setType(type):
 	if type == "fast":
-		modulate = Color(0, 255, 0)
-		speed += 100
+		modulate = Color(0, 1, 0)
+		speed *= 2
+		print(speed)
 	elif type == "mega":
-		modulate = Color(255, 0, 0)
-		scale.x += 3
+		modulate = Color(0.863, 0.392, 0)
+		speed /= 1.5
+		scale.x += 2
+		scale.y += 2
 
 
 
