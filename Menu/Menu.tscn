@@ -257,7 +257,6 @@ scale = Vector2(0.251981, 0.189446)
 texture = ExtResource("8_p1hby")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
-visible = false
 z_index = -1
 layout_mode = 1
 anchors_preset = 15

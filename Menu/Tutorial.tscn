@@ -2,9 +2,15 @@
 
 [ext_resource type="Script" path="res://Menu/menu.gd" id="1_wo01e"]
 [ext_resource type="VideoStream" path="res://Video/Space-Background.ogv" id="5_vwfxx"]
-[ext_resource type="LabelSettings" uid="uid://dt1fyosd1flvg" path="res://assets/Credit Label Settings.tres" id="6_ixtun"]
 [ext_resource type="Script" path="res://ReturnMenuButton.gd" id="7_4s51d"]
 [ext_resource type="FontFile" uid="uid://ciuann1rm6s0g" path="res://Menu/PaletteMosaic-Regular.ttf" id="8_txfxp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x48q8"]
+font_size = 24
+font_color = Color(0.809426, 0.815732, 0.806333, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0.156863, 0.156863, 0.156863, 0)
 
 [sub_resource type="FontFile" id="1"]
 fallbacks = Array[Font]([ExtResource("8_txfxp")])
@@ -160,151 +166,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -104.0
-offset_top = -253.0
-offset_right = 105.0
-offset_bottom = -182.0
+offset_left = -247.0
+offset_top = -171.0
+offset_right = 249.0
+offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Controls
+text = "----------------Controls----------------
 Left/Right Arrow Keys: Move Left and Right
 Space: Shoot
 B: Shoot Bomb Shot (Powerup Only)
 Shift: Dash (Powerup Only)"
-label_settings = ExtResource("6_ixtun")
-horizontal_alignment = 1
-
-[node name="Special Thanks" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -166.0
-offset_top = 158.0
-offset_right = 167.0
-offset_bottom = 279.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Special Thank You
-to all the beta testers for feedback
-on the LTC open night
-8th May 2025"
-label_settings = ExtResource("6_ixtun")
-horizontal_alignment = 1
-
-[node name="You Know" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -312.0
-offset_top = -86.9999
-offset_right = 311.0
-offset_bottom = -27.9999
-grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(311, 29)
-text = "And to the 2 kids who got to level 20
-That was valuabe feedback that the game was WAY to easy lmao"
-label_settings = ExtResource("6_ixtun")
-horizontal_alignment = 1
-
-[node name="Artist" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -283.0
-offset_top = -81.0
-offset_right = -83.0
-offset_bottom = -10.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Lead Artist
-Christopher Lim"
-label_settings = ExtResource("6_ixtun")
-horizontal_alignment = 1
-
-[node name="Artist2" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -283.0
-offset_top = 27.0
-offset_right = -83.0
-offset_bottom = 117.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Sound Design
-Christopher Lim
-Ryan Cather"
-label_settings = ExtResource("6_ixtun")
-horizontal_alignment = 1
-
-[node name="Artist3" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -104.0
-offset_top = -81.0
-offset_right = 96.0
-offset_bottom = 9.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Lead Designer
-Christopher Lim"
-label_settings = ExtResource("6_ixtun")
-horizontal_alignment = 1
-
-[node name="Executive Manager" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 74.0
-offset_top = -81.0
-offset_right = 274.0
-offset_bottom = -10.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Executive Manager
-Christopher Lim"
-label_settings = ExtResource("6_ixtun")
-horizontal_alignment = 1
-
-[node name="Other Programers" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 65.0
-offset_top = 27.0
-offset_right = 284.0
-offset_bottom = 172.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Programing Team
-Christopher Lim
-Christopher Lim
-Christopher Lim"
-label_settings = ExtResource("6_ixtun")
+label_settings = SubResource("LabelSettings_x48q8")
 horizontal_alignment = 1
 
 [node name="Game Title" type="Label" parent="."]

@@ -5,7 +5,11 @@ extends Control
 @onready var LevelLabel = %LevelLabel
 @onready var timer = %"Global Timer"
 var rng = RandomNumberGenerator.new()
-var enemyScene = preload("res://Enemy/Enemies.tscn")
+var enemyScene = [
+	"res://Enemy/Enemy Formations/Default Enemies.tscn",
+	"res://Enemy/Enemy Formations/Circle Enemies.tscn",
+]
+
 var levelsPassed = 0
 
 
@@ -33,23 +37,23 @@ func newRound():
 		GlobalVariables.enemyReference.queue_free()
 		animationPlayer.play("Win Label Flash", -1, 1)
 		await animationPlayer.animation_finished
-		if rng.randi_range(levelsPassed, 3) == 2 and GlobalVariables.powerUpMode == true:
+		if rng.randi_range(levelsPassed, 2) == 2 and GlobalVariables.powerUpMode == true:
 			levelsPassed = 0
 			GlobalVariables.UpgradesUI.startUpgrades()
 		else:
-			timer.start(1)
-			GlobalVariables.Level += 1
-			levelsPassed += 1
-			LevelLabel.text = str("Level: ", GlobalVariables.Level)
-			var enemy_instance = enemyScene.instantiate()
-			enemy_instance.position = Vector2(725, 0)
-			get_tree().get_root().add_child(enemy_instance)
+			spawnEnemies()
 
 func upgradeFinishedRound():
-		timer.start(1)
-		GlobalVariables.Level += 1
-		levelsPassed += 1
-		LevelLabel.text = str("Level: ", GlobalVariables.Level)
-		var enemy_instance = enemyScene.instantiate()
-		enemy_instance.position = Vector2(725, 0)
-		get_tree().get_root().add_child(enemy_instance)
+	spawnEnemies()
+
+
+func spawnEnemies():
+	var pickedEnemy = enemyScene[rng.randi_range(0, enemyScene.size() - 1)]
+	var enemyLoaded = load(pickedEnemy)
+	timer.start(1)
+	GlobalVariables.Level += 1
+	levelsPassed += 1
+	LevelLabel.text = str("Level: ", GlobalVariables.Level)
+	var enemy_instance = enemyLoaded.instantiate()
+	enemy_instance.position = Vector2(640, 230)
+	get_tree().get_root().add_child(enemy_instance)

@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bn6t45tk4m45j" path="res://UFO/UFO.tscn" id="5_7c643"]
 [ext_resource type="PackedScene" uid="uid://tf1oevqeipdk" path="res://UFO/Powerup Text.tscn" id="10_xvxs1"]
 [ext_resource type="VideoStream" path="res://Video/Ingame Background.ogv" id="11_2ahsg"]
-[ext_resource type="PackedScene" uid="uid://cgl3lh2gmlksx" path="res://Enemy/Enemies.tscn" id="11_uuyaq"]
+[ext_resource type="PackedScene" uid="uid://cgl3lh2gmlksx" path="res://Enemy/Enemy Formations/Default Enemies.tscn" id="11_uuyaq"]
 [ext_resource type="LabelSettings" uid="uid://dmirjlsvd8fa8" path="res://assets/LevellabelSettings.tres" id="12_3gpde"]
 [ext_resource type="LabelSettings" uid="uid://dlk57v4ova05e" path="res://assets/LevelWinLabelSettings.tres" id="12_odgvu"]
 [ext_resource type="PackedScene" uid="uid://bbv6s412cqbwj" path="res://MainGame/Upgrades UI.tscn" id="14_n27qm"]
@@ -271,7 +271,7 @@ label_settings = ExtResource("12_odgvu")
 horizontal_alignment = 1
 
 [node name="Enemies" parent="." instance=ExtResource("11_uuyaq")]
-position = Vector2(725, 0)
+position = Vector2(640, 230)
 
 [node name="Health" type="HBoxContainer" parent="."]
 unique_name_in_owner = true

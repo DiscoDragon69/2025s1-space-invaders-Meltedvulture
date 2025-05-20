@@ -36,7 +36,7 @@ func _ready():
 	visible = false
 
 func rollUpgrade():
-	if rng.randi_range(0, 15) == 5:
+	if rng.randi_range(0, 10) == 5:
 	#if true:
 		visible = true
 		costIndex = rng.randi_range(0, (costText.size() - 1))
@@ -76,6 +76,7 @@ func costCheck():
 
 func activateUpgrade():
 	if costCheck():
+		visible = false
 		if upgrade == 0:
 			GlobalVariables.player.change_health(3)
 		if upgrade == 1:

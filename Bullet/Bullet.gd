@@ -12,7 +12,7 @@ func _ready():
 	GlobalVariables.sceneChange.connect(sceneUpdate)
 
 func sceneUpdate():
-	self.queue_free()
+	queue_free()
 
 
 func tripleShotMovement(Direction):

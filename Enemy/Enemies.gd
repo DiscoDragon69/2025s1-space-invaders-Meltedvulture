@@ -14,7 +14,7 @@ func _ready():
 
 func gridMove():
 	if GlobalVariables.hardMode == true:
-		adjustedTimer = clampf(0.25 - (float(GlobalVariables.Level) / 50), 0.01, 0.5)
+		adjustedTimer = clampf(0.25 - (float(GlobalVariables.Level) / 66), 0.01, 0.5)
 	else:
 		adjustedTimer = clampf(0.25 - (float(GlobalVariables.Level) / 75), 0.025, 0.5)
 	speed = GlobalVariables.enemySpeed
