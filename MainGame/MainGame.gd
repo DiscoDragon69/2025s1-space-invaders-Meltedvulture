@@ -36,6 +36,7 @@ func newRound():
 	if GlobalVariables.enemyReference.get_child_count() == 2:
 		GlobalVariables.enemyReference.queue_free()
 		animationPlayer.play("Win Label Flash", -1, 1)
+		GlobalVariables.bulletInstanceCount = 0
 		await animationPlayer.animation_finished
 		if rng.randi_range(levelsPassed, 2) == 2 and GlobalVariables.powerUpMode == true:
 			levelsPassed = 0

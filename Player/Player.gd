@@ -6,7 +6,8 @@ var bomb_source = preload ("res://Bullet/Bomb.tscn")
 var bombCount = 3
 var rng = RandomNumberGenerator.new()
 var canDash = true
-@onready var timer = %"Global Timer"
+@onready var timer = %"Powerup Timer"
+@onready var timer2 = %"Global Timer"
 @onready var rapidFireTimer = %"Rapid Fire Timer"
 @export var animationPlayer : AnimationPlayer
 @export var health: int = 100
@@ -127,13 +128,13 @@ func rapidFire():
 		rapidFire()
 
 func dashCooldown():
-	timer.start(GlobalVariables.dashCooldown)
-	await timer.timeout
+	timer2.start(GlobalVariables.dashCooldown)
+	await timer2.timeout
 	canDash = true
 	for n in 4:
 			modulate = Color(255, 255, 0, 255)
-			timer.start(0.05)
+			timer2.start(0.05)
 			await timer.timeout
 			modulate = Color(255, 255, 255, 255)
-			timer.start(0.05)
+			timer2.start(0.05)
 			await timer.timeout

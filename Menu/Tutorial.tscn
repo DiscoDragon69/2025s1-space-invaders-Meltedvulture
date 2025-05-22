@@ -146,6 +146,7 @@ size_flags_vertical = 3
 script = ExtResource("1_wo01e")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+modulate = Color(0.393086, 0.393086, 0.393085, 1)
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -159,7 +160,7 @@ autoplay = true
 expand = true
 loop = true
 
-[node name="Tutorial Title" type="Label" parent="."]
+[node name="Controls" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -175,8 +176,31 @@ grow_vertical = 2
 text = "----------------Controls----------------
 Left/Right Arrow Keys: Move Left and Right
 Space: Shoot
-B: Shoot Bomb Shot (Powerup Only)
+B: Shoot Bomb (Powerup Only)
 Shift: Dash (Powerup Only)"
+label_settings = SubResource("LabelSettings_x48q8")
+horizontal_alignment = 1
+
+[node name="Game Tutorial" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -247.0
+offset_top = 68.0
+offset_right = 249.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "----------------Tutorial----------------
+- Shoot enemies and dodge incoming projectiles.
+- UFO when shot will provide a random powerup.
+- Enemies that have shields must be shot twice.
+
+- Upgrade ships can appear at the end of a level
+some upgrades may cost something such as points or health"
 label_settings = SubResource("LabelSettings_x48q8")
 horizontal_alignment = 1
 
